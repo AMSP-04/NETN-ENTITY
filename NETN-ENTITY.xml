@@ -47,14 +47,6 @@
             <type>Dependency</type>
             <identification>NETN-BASE</identification>
         </reference>
-        <reference>
-            <type>Dependency</type>
-            <identification>RPR-Physical</identification>
-        </reference>
-        <reference>
-            <type>Dependency</type>
-            <identification>RPR-Aggregate</identification>
-        </reference>
         <other>
 Copyright © 2020 by NATO/OTAN. All rights reserved.
 This work is licensed under a Creative Commons Attribution-NoDerivatives 4.0 International License.
@@ -130,7 +122,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <semantics>A group of one or more separate objects that operate together as part of an organization. These objects may be discrete, may be other aggregate objects, or may be a mixture of both.</semantics>
                     <attribute>
                         <name>SuppliesStatus</name>
-                        <dataType>SupplyStructArray</dataType>
+                        <dataType>ArrayOfSupplyStruct</dataType>
                         <updateType>Conditional</updateType>
                         <updateCondition>On change</updateCondition>
                         <ownership>DivestAcquire</ownership>
@@ -331,18 +323,11 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
         </enumeratedDataTypes>
         <arrayDataTypes>
             <arrayData>
-                <name>ArrayOfResourceStatus</name>
-                <dataType>ResourceStatusStruct</dataType>
-                <cardinality>[1..2147483647]</cardinality>
-                <encoding>HLAvariableArray</encoding>
-                <semantics>The array of health states for a named resource.</semantics>
-            </arrayData>
-            <arrayData>
                 <name>ArrayOfSensorStruct</name>
                 <dataType>SensorStateStruct</dataType>
                 <cardinality>[1..2147483647]</cardinality>
                 <encoding>HLAvariableArray</encoding>
-                <semantics>Array with definitio0ns of sensors, 1+ cardinality</semantics>
+                <semantics>Array with definitions of sensors, 1+ cardinality</semantics>
             </arrayData>
         </arrayDataTypes>
         <fixedRecordDataTypes>
@@ -392,46 +377,6 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                 </field>
             </fixedRecordData>
             <fixedRecordData>
-                <name>ResourceStatusStruct</name>
-                <encoding>HLAfixedRecord</encoding>
-                <semantics>The name of a resource and the number of instances of that resource by health status.</semantics>
-                <field>
-                    <name>NumberHealthyOrIntact</name>
-                    <dataType>QuantityFloat64</dataType>
-                    <semantics>The number of healthy or intact resources</semantics>
-                </field>
-                <field>
-                    <name>NumberSlightlyDamaged</name>
-                    <dataType>QuantityFloat64</dataType>
-                    <semantics>The number of slightly damaged resources</semantics>
-                </field>
-                <field>
-                    <name>NumberModeratelyDamaged</name>
-                    <dataType>QuantityFloat64</dataType>
-                    <semantics>The number of moderately damaged resources</semantics>
-                </field>
-                <field>
-                    <name>NumberSignificantlyDamaged</name>
-                    <dataType>QuantityFloat64</dataType>
-                    <semantics>The number of significantly damaged resources</semantics>
-                </field>
-                <field>
-                    <name>NumberDestroyed</name>
-                    <dataType>QuantityFloat64</dataType>
-                    <semantics>The number of destroyed or consumed resources</semantics>
-                </field>
-                <field>
-                    <name>ResourceName</name>
-                    <dataType>HLAunicodeString</dataType>
-                    <semantics>The name of the resource</semantics>
-                </field>
-                <field>
-                    <name>ResourceType</name>
-                    <dataType>EntityTypeStruct</dataType>
-                    <semantics>The type of the resource (as described in the Bit Encoded Values for Use with Protocols for Distributed Interactive Simulation Applications)</semantics>
-                </field>
-            </fixedRecordData>
-            <fixedRecordData>
                 <name>SensorStateStruct</name>
                 <encoding>HLAfixedRecord</encoding>
                 <semantics>Defines a sensor's operational status, damage status, and coverage.</semantics>
@@ -451,7 +396,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <semantics>The maximum range of the sensor</semantics>
                 </field>
                 <field>
-                    <name>SensorID</name>
+                    <name>SensorId</name>
                     <dataType>UUID</dataType>
                     <semantics>A sensor owned by the aggregate</semantics>
                 </field>
@@ -603,12 +548,10 @@ NETN-MRM FOM Module v1.2.0 was developed by MSG-106 and MSG-134 and released as 
 * Added datatype `WeaponControlOrderEnum8` 
 * Added datatype `CaptureStatusEnum8` 
 * Added datatype `SensorStateEnum32` 
-* Added datatype `ArrayOfResourceStatus` 
 * Added datatype `ArrayOfSensorStruct` 
 * Added datatype `VisualSignatureStruct` 
 * Added datatype `HUMINTSignatureStruct` 
 * Added datatype `ElectronicSignatureStruct` 
-* Added datatype `ResourceStatusStruct` 
 * Added datatype `SensorStateStruct` 
  
 * Changed datatype of FixedRecord SensorStruct field SensorID to UUID</semantics>
