@@ -36,9 +36,9 @@ Version numbering of this FOM Module and associated documentation is based on th
 
 |Version|
 |---|
-|v1.2 - First version developed by MSG-134 for NETN-FOM v2.0. Object classes and datatypes derived from deprecated NETN-FOM v 1.0 module AggDeagg.|
-|v2.0 - Updated version developed by MSG-163 for NETN-FOM v3.0|
-|v3.0 - Updated version developed by MSG-191 for NATO-FOM v4.0|
+|v1.2 - First version developed by MSG-134 for NETN FOM v2.0. Object classes and datatypes derived from deprecated NETN FOM v 1.0 module AggDeagg.|
+|v2.0 - Updated version developed by MSG-163 for NETN FOM v3.0|
+|v3.0 - Updated version developed by MSG-191 for NETN FOM v4.0|
 
 > [Changelog](changelog.md)
 

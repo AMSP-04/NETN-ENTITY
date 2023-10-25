@@ -1,10 +1,10 @@
 ## Changelog NETN-Physical
 
-### v1.2 - First version developed by MSG-134 for NETN-FOM v2.0. Object classes and datatypes derived from deprecated NETN-FOM v 1.0 module AggDeagg.
+### v1.2 - First version developed by MSG-134 for NETN FOM v2.0. Object classes and datatypes derived from deprecated NETN FOM v 1.0 module AggDeagg.
 
 
 
-### v2.0 - Updated version developed by MSG-163 for NETN-FOM v3.0
+### v2.0 - Updated version developed by MSG-163 for NETN FOM v3.0
 
 * Added attribute `SourceUnit` to all NETN-Physical platform and lifeform object classes. 
 * Added attribute `Route` to all NETN-Physical platform, munition and lifeform object classes. 
@@ -14,7 +14,7 @@
 * Renamed object class `SubmersibleVehicle` to `SubmersibleVessel`. 
  
 ### Changes for v1.2.0 
-NETN-MRM FOM Module v1.2.0 was developed by MSG-106 and MSG-134 and released as part of NETN-FOM v2.0 in AMSP-04 Ed A. 
+NETN-MRM FOM Module v1.2.0 was developed by MSG-106 and MSG-134 and released as part of NETN FOM v2.0 in AMSP-04 Ed A. 
  
 * Added object classes and datatypes from FOM modules in NETN FOM v1 
 * Added object class `NETN_CulturalFeature` 
@@ -24,7 +24,7 @@ NETN-MRM FOM Module v1.2.0 was developed by MSG-106 and MSG-134 and released as 
 * Changed from Reliable to BestEffort on some attributes to get a common transport type
 
 
-### v3.0 - Updated version developed by MSG-191 for NATO-FOM v4.0
+### v3.0 - Updated version developed by MSG-191 for NETN FOM v4.0
 
 * Removed `NETN_Aircraft` object class
 * Replaced `NETN_Aircraft` attribute `UniqueId` with NETN-BASE `HLAobjectRoot` attribute `UniqueId`
