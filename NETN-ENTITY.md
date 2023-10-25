@@ -1,10 +1,10 @@
 
-# NETN-Physical
+# NETN-ENTITY
 |Version| Date| Dependencies|
 |---|---|---|
-|v3.0|2023-04-11|NETN-BASE, RPR-Physical, RPR-Aggregate|
+|v3.0|2023-10-25|NETN-BASE|
 
-The NETN-Physical FOM Module provides a standard interface for representing simulation entities in a federated distributed simulation. The module extends the RPR-FOM standard SISO-STD-001-2015 with additional attributes for simulated physical and aggregated entities.
+The NETN-ENTITY FOM Module provides a standard interface for representing simulation entities in a federated distributed simulation. The module extends the RPR-FOM standard SISO-STD-001-2015 with additional attributes for simulated physical and aggregated entities.
 
 The specification is based on IEEE 1516 High Level Architecture (HLA) Object Model Template (OMT) and supports interoperability in a federated simulation (federation) based on HLA.
 
@@ -39,9 +39,6 @@ A group of one or more separate objects that operate together as part of an orga
 
 |Attribute|Datatype|Semantics|
 |---|---|---|
-|SuppliesStatus|SupplyStructArray|Optional. The type and total quantities of supply holdings modelled by this entity.|
-|EquipmentStatus|ArrayOfResourceStatus|Optional. The total amount and status of equipment holdings represented by this entity.|
-|PersonnelStatus|ArrayOfResourceStatus|Optional. The total amount and status of all personnel holdings modelled by this entity.|
 |VisualSignature|VisualSignatureStruct|Optional: Describes the susceptibility to electro-optical detection.|
 |HUMINTSignature|HUMINTSignatureStruct|Optional: Describes the susceptibility to human intelligence (HUMINT), i.e. information collected and provided by human sources.|
 |ElectronicSignature|ElectronicSignatureStruct|Optional: Describes the susceptibility to electronic detection both as a summary value and by identifying aggregate sensors together with their operational status.|
@@ -58,19 +55,13 @@ Note that only datatypes defined in this FOM Module are listed below. Please ref
 ### Overview
 |Name|Semantics|
 |---|---|
-|ArrayOfEntityStruct|Data for one or more entities that comprise an entity list.|
-|ArrayOfResourceStatus|The array of health states for a named resource.|
-|ArrayOfSensorStruct|Array with definitio0ns of sensors, 1+ cardinality|
+|ArrayOfSensorStruct|Array with definitions of sensors, 1+ cardinality|
 |CaptureStatusEnum8|The status of a simulated entity concerning their control or influence over their activities.|
-|ConcealmentEnum32|The type of concealment.|
 |ElectronicSignatureStruct|An entity's susceptibility to detection of its electronic emissions.|
-|EntityCategoryEnum32|Category of entity|
-|EntityStruct|An entity represented to the federation as part of the aggregate object which owns it.|
 |HUMINTSignatureStruct|Describes the entity's susceptibility to human intelligence (HUMINT), i.e. information collected and provided by human sources.|
 |RangeFloat32|Range of sensor|
-|ResourceStatusStruct|The name of a resource and the number of instances of that resource by health status.|
 |SensorStateEnum32|The emission states of aggregate sensors|
-|SensorStruct|Defines a sensor's operational status, damage status, and coverage.|
+|SensorStateStruct|Defines a sensor's operational status, damage status, and coverage.|
 |VisualSignatureStruct|Specifies the visual structure|
 |WeaponControlOrderEnum8|The enumerations for weapon control|
         
@@ -83,25 +74,19 @@ Note that only datatypes defined in this FOM Module are listed below. Please ref
 |Name|Representation|Semantics|
 |---|---|---|
 |CaptureStatusEnum8|HLAoctet|The status of a simulated entity concerning their control or influence over their activities.|
-|ConcealmentEnum32|RPRunsignedInteger32BE|The type of concealment.|
-|EntityCategoryEnum32|RPRunsignedInteger32BE|Category of entity|
-|SensorStateEnum32|RPRunsignedInteger32BE|The emission states of aggregate sensors|
+|SensorStateEnum32|HLAinteger32BE|The emission states of aggregate sensors|
 |WeaponControlOrderEnum8|HLAoctet|The enumerations for weapon control|
         
 ### Array Datatypes
 |Name|Element Datatype|Semantics|
 |---|---|---|
-|ArrayOfEntityStruct|EntityStruct|Data for one or more entities that comprise an entity list.|
-|ArrayOfResourceStatus|ResourceStatusStruct|The array of health states for a named resource.|
-|ArrayOfSensorStruct|SensorStruct|Array with definitio0ns of sensors, 1+ cardinality|
+|ArrayOfSensorStruct|SensorStateStruct|Array with definitions of sensors, 1+ cardinality|
         
 ### Fixed Record Datatypes
 |Name|Fields|Semantics|
 |---|---|---|
 |ElectronicSignatureStruct|ElectronicSignaturePercent, SensorArray|An entity's susceptibility to detection of its electronic emissions.|
-|EntityStruct|Callsign, EntityCategory, EntityStatus, IsDistinctObject, IsUnavailable, Facing, Concealment, OffsetLocation, Allocation|An entity represented to the federation as part of the aggregate object which owns it.|
 |HUMINTSignatureStruct|HUMINTSignaturePercent|Describes the entity's susceptibility to human intelligence (HUMINT), i.e. information collected and provided by human sources.|
-|ResourceStatusStruct|NumberHealthyOrIntact, NumberSlightlyDamaged, NumberModeratelyDamaged, NumberSignificantlyDamaged, NumberDestroyed, ResourceName, ResourceType|The name of a resource and the number of instances of that resource by health status.|
-|SensorStruct|SensorStateEnum, SensorDamageState, SensorCoverage, SensorID|Defines a sensor's operational status, damage status, and coverage.|
+|SensorStateStruct|SensorStateEnum, SensorDamageState, SensorCoverage, SensorId|Defines a sensor's operational status, damage status, and coverage.|
 |VisualSignatureStruct|DVOSignaturePercent, I2SignaturePercent, ThermalSignaturePercent|Specifies the visual structure|
     

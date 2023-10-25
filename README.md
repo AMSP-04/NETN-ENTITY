@@ -1,13 +1,13 @@
-# NETN-Physical
+# NETN-ENTITY
 
 
 |Version| Date| Dependencies|
 |---|---|---|
-|v3.0|2023-04-11|NETN-BASE, RPR-Physical, RPR-Aggregate|
+|v3.0|2023-10-25|NETN-BASE|
 
-> [Full Documentation](NETN-Physical.md)
+> [Full Documentation](NETN-ENTITY.md)
 
-The NETN-Physical FOM Module provides a standard interface for representing simulation entities in a federated distributed simulation. The module extends the RPR-FOM standard SISO-STD-001-2015 with additional attributes for simulated physical and aggregated entities.
+The NETN-ENTITY FOM Module provides a standard interface for representing simulation entities in a federated distributed simulation. The module extends the RPR-FOM standard SISO-STD-001-2015 with additional attributes for simulated physical and aggregated entities.
 
 The specification is based on IEEE 1516 High Level Architecture (HLA) Object Model Template (OMT) and supports interoperability in a federated simulation (federation) based on HLA.
 
@@ -17,7 +17,7 @@ For backward compatibility, published objects should include all required RPR-FO
 
 Copyright (C) 2020 NATO/OTAN. This work is licensed under a [Creative Commons Attribution-NoDerivatives 4.0 International License](LICENCE.md).
 
-The work includes the NETN-Physical.xml FOM Module and documentation.
+The work includes the NETN-ENTITY.xml FOM Module and documentation.
 
 The licence gives you the right to use and redistribute the NETN FOM Module (XML file and Documentation) in its entirety without modification. You are also allowed to develop new FOM Modules (in separate XML files and separate documentation) that build on or extend the NETN module by referencing and including necessary scaffolding classes. You are NOT allowed to modify this FOM Module or its documentation without prior permission from the NATO Modelling and Simulation Group.
 
@@ -37,8 +37,8 @@ Version numbering of this FOM Module and associated documentation is based on th
 |Version|
 |---|
 |v1.2 - First version developed by MSG-134 for NETN FOM v2.0. Object classes and datatypes derived from deprecated NETN FOM v 1.0 module AggDeagg.|
-|v2.0 - Updated version developed by MSG-163 for NETN FOM v3.0|
-|v3.0 - Updated version developed by MSG-191 for NETN FOM v4.0|
+|v2.0 - Updated version developed by MSG-163 for NETN FOM v3.0 renamed NETN-Physical|
+|v3.0 - Updated version developed by MSG-191 for NETN FOM v4.0 renamed NETN-ENTITY|
 
 > [Changelog](changelog.md)
 

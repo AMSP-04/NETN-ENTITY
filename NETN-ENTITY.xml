@@ -4,7 +4,7 @@
         <name>NETN-ENTITY</name>
         <type>FOM</type>
         <version>v3.0</version>
-        <modificationDate>2023-06-26</modificationDate>
+        <modificationDate>2023-10-25</modificationDate>
         <securityClassification>Not Classified</securityClassification>
         <purpose>The NETN-ENTITY FOM Module provides a standard interface for representing simulation entities in a federated distributed simulation. The module extends the RPR-FOM standard SISO-STD-001-2015 with additional attributes for simulated physical and aggregated entities.</purpose>
         <applicationDomain></applicationDomain>
