@@ -225,7 +225,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
             <enumeratedData>
                 <name>SignatureTypeEnum8</name>
                 <representation>HLAinteger32BE</representation>
-                <semantics></semantics>
+                <semantics>Different types of signatures.</semantics>
                 <enumerator>
                     <name>DVOSignature</name>
                     <value>1</value>
@@ -392,7 +392,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <semantics>Describes the susceptibility to electronic detection both as a summary value and by identifying aggregate sensors together with their operational status. A summary percentage of an entity's susceptibility to detection of its electronic emissions. Zero percent means that the aggregate has no electronic emissions.</semantics>
                 </alternative>
                 <encoding>HLAvariantRecord</encoding>
-                <semantics></semantics>
+                <semantics>Different types of signatures that describes detectability using different types of sensors, e.g. Direct Visual Optics, Image Intensifiers, Thermal, etc.</semantics>
             </variantRecordData>
         </variantRecordDataTypes>
     </dataTypes>

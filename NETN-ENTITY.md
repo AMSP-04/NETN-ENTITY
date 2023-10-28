@@ -58,8 +58,8 @@ Note that only datatypes defined in this FOM Module are listed below. Please ref
 |RangeFloat32|Range of sensor|
 |SensorStateEnum32|The emission states of aggregate sensors|
 |SensorStateStruct|Defines a sensor's operational status, damage status, and coverage.|
-|SignatureTypeEnum8||
-|SignatureVariant||
+|SignatureTypeEnum8|Different types of signatures.|
+|SignatureVariant|Different types of signatures that describes detectability using different types of sensors, e.g. Direct Visual Optics, Image Intensifiers, Thermal, etc.|
 |SymbolStruct|Symbol Id and additional symbol amplification data.|
 |VisualSignatureStruct|Specifies the visual structure|
 |WeaponControlOrderEnum8|The enumerations for weapon control|
@@ -73,7 +73,7 @@ Note that only datatypes defined in this FOM Module are listed below. Please ref
 |Name|Representation|Semantics|
 |---|---|---|
 |SensorStateEnum32|HLAinteger32BE|The emission states of aggregate sensors|
-|SignatureTypeEnum8|HLAinteger32BE||
+|SignatureTypeEnum8|HLAinteger32BE|Different types of signatures.|
 |WeaponControlOrderEnum8|HLAoctet|The enumerations for weapon control|
         
 ### Array Datatypes
@@ -94,5 +94,5 @@ Note that only datatypes defined in this FOM Module are listed below. Please ref
 ### Variant Record Datatypes
 |Name|Discriminant (Datatype)|Alternatives|Semantics|
 |---|---|---|---|
-|SignatureVariant|Signature (SignatureTypeEnum8)|DVO, I2, Thermal, HUMINT, Electronic||
+|SignatureVariant|Signature (SignatureTypeEnum8)|DVO, I2, Thermal, HUMINT, Electronic|Different types of signatures that describes detectability using different types of sensors, e.g. Direct Visual Optics, Image Intensifiers, Thermal, etc.|
     
