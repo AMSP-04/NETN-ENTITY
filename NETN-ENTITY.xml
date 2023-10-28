@@ -62,6 +62,17 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                 <sharing>Subscribe</sharing>
                 <semantics>A base class of aggregate and discrete scenario domain participants. The BaseEntity class is characterized by being located at a particular location in space and independently movable, if capable of movement at all. It specifically excludes elements normally considered to be a component of another element. The BaseEntity class is intended to be a container for common attributes for entities of this type. Since it lacks sufficient class specific attributes that are required for simulation purposes, federates cannot publish objects of this class. Certain simulation management federates, e.g. viewers, may subscribe to this class. Simulation federates will normally subscribe to one of the subclasses, to gain the extra information required to properly simulate the entity.</semantics>
                 <attribute>
+                    <name>Callsign</name>
+                    <dataType>HLAunicodeString</dataType>
+                    <updateType>Static</updateType>
+                    <updateCondition>NA</updateCondition>
+                    <ownership>DivestAcquire</ownership>
+                    <sharing>PublishSubscribe</sharing>
+                    <transportation>HLAreliable</transportation>
+                    <order>Receive</order>
+                    <semantics>Optional: The callsign is the unique-designator symbol-amplifier. The default is using the RPR-FOM `PhysicalEntity` attribute `Marking` or the `AggregateEntity` attribute `AggregateMarking`. Max length 21 characters.</semantics>
+                </attribute>
+                <attribute>
                     <name>SymbolId</name>
                     <dataType>SymbolIdentifier</dataType>
                     <updateType>Conditional</updateType>
@@ -84,15 +95,48 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <semantics>Optional: Additional symbol amplification data.</semantics>
                 </attribute>
                 <attribute>
-                    <name>Callsign</name>
-                    <dataType>Text21</dataType>
-                    <updateType>Static</updateType>
-                    <updateCondition>NA</updateCondition>
+                    <name>Protection</name>
+                    <dataType>PercentFloat32</dataType>
+                    <updateType>Conditional</updateType>
+                    <updateCondition>On change</updateCondition>
+                    <ownership>DivestAcquire</ownership>
+                    <sharing>Publish</sharing>
+                    <transportation>HLAreliable</transportation>
+                    <order>Receive</order>
+                    <semantics>Optional. The cover status describes the entity's protection from the effects of weapons fire. The default is 0% - fully affected by weapon fire.</semantics>
+                </attribute>
+                <attribute>
+                    <name>CaptureStatus</name>
+                    <dataType>CaptureStatusEnum8</dataType>
+                    <updateType>Conditional</updateType>
+                    <updateCondition>On change</updateCondition>
                     <ownership>DivestAcquire</ownership>
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Optional: The callsign is the unique-designator symbol-amplifier. The default is using the RPR-FOM `PhysicalEntity` attribute `Marking` or the `AggregateEntity` attribute `AggregateMarking`.</semantics>
+                    <semantics>Optional: The status of an entity's level of control or influence over its activities. The default is Not-Captured.</semantics>
+                </attribute>
+                <attribute>
+                    <name>Signatures</name>
+                    <dataType>ArrayOfSignatures</dataType>
+                    <updateType>Conditional</updateType>
+                    <updateCondition>On change</updateCondition>
+                    <ownership>DivestAcquire</ownership>
+                    <sharing>PublishSubscribe</sharing>
+                    <transportation>HLAreliable</transportation>
+                    <order>Receive</order>
+                    <semantics>Optional: A set of signatures to characterize this entity's susceptibility to detection.</semantics>
+                </attribute>
+                <attribute>
+                    <name>Sensors</name>
+                    <dataType>ArrayOfSensors</dataType>
+                    <updateType>Conditional</updateType>
+                    <updateCondition>On change</updateCondition>
+                    <ownership>DivestAcquire</ownership>
+                    <sharing>PublishSubscribe</sharing>
+                    <transportation>HLAreliable</transportation>
+                    <order>Receive</order>
+                    <semantics>Optional: A set of sensors associated with the entity.</semantics>
                 </attribute>
                 <attribute>
                     <name>HostEntity</name>
@@ -105,53 +149,20 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <order>Receive</order>
                     <semantics>Optional. Reference to the simulation entity this platform is mounted on or embedded in. The default is no host entity (all zeros UUID).</semantics>
                 </attribute>
-                <attribute>
-                    <name>HostedEntities</name>
-                    <dataType>ArrayOfUuid</dataType>
-                    <updateType>Conditional</updateType>
-                    <updateCondition>On change</updateCondition>
-                    <ownership>DivestAcquire</ownership>
-                    <sharing>PublishSubscribe</sharing>
-                    <transportation>HLAreliable</transportation>
-                    <order>Receive</order>
-                    <semantics>Optional. Reference to simulation entities mounted on or embedded in a `CulturalFeature`, `Platform`, or `AggregateEntity` simulation entity.</semantics>
-                </attribute>
                 <objectClass>
                     <name>AggregateEntity</name>
                     <sharing>PublishSubscribe</sharing>
                     <semantics>A group of one or more separate objects that operate together as part of an organization. These objects may be discrete, may be other aggregate objects, or may be a mixture of both.</semantics>
                     <attribute>
-                        <name>VisualSignature</name>
-                        <dataType>VisualSignatureStruct</dataType>
-                        <updateType>Conditional</updateType>
-                        <updateCondition>On change</updateCondition>
+                        <name>Echelon</name>
+                        <dataType>EchelonEnum32</dataType>
+                        <updateType>Static</updateType>
+                        <updateCondition>N/A</updateCondition>
                         <ownership>DivestAcquire</ownership>
                         <sharing>PublishSubscribe</sharing>
                         <transportation>HLAreliable</transportation>
                         <order>Receive</order>
-                        <semantics>Optional: Describes the susceptibility to electro-optical detection.</semantics>
-                    </attribute>
-                    <attribute>
-                        <name>HUMINTSignature</name>
-                        <dataType>HUMINTSignatureStruct</dataType>
-                        <updateType>Conditional</updateType>
-                        <updateCondition>On change</updateCondition>
-                        <ownership>DivestAcquire</ownership>
-                        <sharing>PublishSubscribe</sharing>
-                        <transportation>HLAreliable</transportation>
-                        <order>Receive</order>
-                        <semantics>Optional: Describes the susceptibility to human intelligence (HUMINT), i.e. information collected and provided by human sources.</semantics>
-                    </attribute>
-                    <attribute>
-                        <name>ElectronicSignature</name>
-                        <dataType>ElectronicSignatureStruct</dataType>
-                        <updateType>Conditional</updateType>
-                        <updateCondition>On change</updateCondition>
-                        <ownership>DivestAcquire</ownership>
-                        <sharing>PublishSubscribe</sharing>
-                        <transportation>HLAreliable</transportation>
-                        <order>Receive</order>
-                        <semantics>Optional: Describes the susceptibility to electronic detection both as a summary value and by identifying aggregate sensors together with their operational status.</semantics>
+                        <semantics>Optional. Use the echelon symbol-modifier to specify the size of the AggregateEntity (level of command).</semantics>
                     </attribute>
                     <attribute>
                         <name>CombatValue</name>
@@ -163,39 +174,6 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                         <transportation>HLAreliable</transportation>
                         <order>Receive</order>
                         <semantics>Optional. A summary value of the effectiveness (the level of training, leadership, morale, personnel and equipment operational status). The default value is 100%.</semantics>
-                    </attribute>
-                    <attribute>
-                        <name>CoverStatus</name>
-                        <dataType>PercentFloat32</dataType>
-                        <updateType>Conditional</updateType>
-                        <updateCondition>On change</updateCondition>
-                        <ownership>DivestAcquire</ownership>
-                        <sharing>PublishSubscribe</sharing>
-                        <transportation>HLAreliable</transportation>
-                        <order>Receive</order>
-                        <semantics>Optional. The cover status describes the entity's protection from the effects of weapons fire. The default is 0% - fully affected by weapon fire.</semantics>
-                    </attribute>
-                    <attribute>
-                        <name>CaptureStatus</name>
-                        <dataType>CaptureStatusEnum8</dataType>
-                        <updateType>Conditional</updateType>
-                        <updateCondition>On change</updateCondition>
-                        <ownership>DivestAcquire</ownership>
-                        <sharing>PublishSubscribe</sharing>
-                        <transportation>HLAreliable</transportation>
-                        <order>Receive</order>
-                        <semantics>Optional: The status of an entity's level of control or influence over its activities. The default is Not-Captured.</semantics>
-                    </attribute>
-                    <attribute>
-                        <name>Echelon</name>
-                        <dataType>EchelonEnum32</dataType>
-                        <updateType>Static</updateType>
-                        <updateCondition>N/A</updateCondition>
-                        <ownership>DivestAcquire</ownership>
-                        <sharing>PublishSubscribe</sharing>
-                        <transportation>HLAreliable</transportation>
-                        <order>Receive</order>
-                        <semantics>Optional. Use the echelon symbol-modifier to specify the size of the AggregateEntity (level of command).</semantics>
                     </attribute>
                     <attribute>
                         <name>WeaponsControlOrder</name>
@@ -287,14 +265,46 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <value>3</value>
                 </enumerator>
             </enumeratedData>
+            <enumeratedData>
+                <name>SignatureTypeEnum8</name>
+                <representation>HLAinteger32BE</representation>
+                <semantics></semantics>
+                <enumerator>
+                    <name>DVOSignature</name>
+                    <value>1</value>
+                </enumerator>
+                <enumerator>
+                    <name>I2Signature</name>
+                    <value>2</value>
+                </enumerator>
+                <enumerator>
+                    <name>ThermalSignature</name>
+                    <value>3</value>
+                </enumerator>
+                <enumerator>
+                    <name>HUMINTSignature</name>
+                    <value>4</value>
+                </enumerator>
+                <enumerator>
+                    <name>ElectronicSignature</name>
+                    <value>5</value>
+                </enumerator>
+            </enumeratedData>
         </enumeratedDataTypes>
         <arrayDataTypes>
             <arrayData>
-                <name>ArrayOfSensorStruct</name>
+                <name>ArrayOfSensors</name>
                 <dataType>SensorStateStruct</dataType>
-                <cardinality>[1..2147483647]</cardinality>
+                <cardinality>Dynamic</cardinality>
                 <encoding>HLAvariableArray</encoding>
-                <semantics>Array with definitions of sensors, 1+ cardinality</semantics>
+                <semantics>Array with definitions of sensors.</semantics>
+            </arrayData>
+            <arrayData>
+                <name>ArrayOfSignatures</name>
+                <dataType>SignatureVariant</dataType>
+                <cardinality>Dynamic</cardinality>
+                <encoding>HLAvariableArray</encoding>
+                <semantics>A set of signatures to characterize this entity's susceptibility to detection.</semantics>
             </arrayData>
         </arrayDataTypes>
         <fixedRecordDataTypes>
@@ -339,7 +349,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                 </field>
                 <field>
                     <name>SensorArray</name>
-                    <dataType>ArrayOfSensorStruct</dataType>
+                    <dataType>ArrayOfSensors</dataType>
                     <semantics>A list of sensors owned by the aggregate together with their respective operational status and range</semantics>
                 </field>
             </fixedRecordData>
@@ -347,6 +357,16 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                 <name>SensorStateStruct</name>
                 <encoding>HLAfixedRecord</encoding>
                 <semantics>Defines a sensor's operational status, damage status, and coverage.</semantics>
+                <field>
+                    <name>SensorId</name>
+                    <dataType>UUID</dataType>
+                    <semantics>A sensor managed by the entity.</semantics>
+                </field>
+                <field>
+                    <name>SensorType</name>
+                    <dataType>SignatureTypeEnum8</dataType>
+                    <semantics>The type of signature detected by the sensor.</semantics>
+                </field>
                 <field>
                     <name>SensorStateEnum</name>
                     <dataType>SensorStateEnum32</dataType>
@@ -362,13 +382,47 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <dataType>RangeFloat32</dataType>
                     <semantics>The maximum range of the sensor</semantics>
                 </field>
-                <field>
-                    <name>SensorId</name>
-                    <dataType>UUID</dataType>
-                    <semantics>A sensor owned by the aggregate</semantics>
-                </field>
             </fixedRecordData>
         </fixedRecordDataTypes>
+        <variantRecordDataTypes>
+            <variantRecordData>
+                <name>SignatureVariant</name>
+                <discriminant>Signature</discriminant>
+                <dataType>SignatureTypeEnum8</dataType>
+                <alternative>
+                    <enumerator>DVOSignature</enumerator>
+                    <name>DVO</name>
+                    <dataType>PercentFloat32</dataType>
+                    <semantics>Describes the susceptibility to electro-optical detection. A summary percentage of entity susceptibility to detection by direct view optics, i.e. the human eye, binoculars, or telescopes. An entity with zero percent signature would be concealed from DVO detection.</semantics>
+                </alternative>
+                <alternative>
+                    <enumerator>I2Signature</enumerator>
+                    <name>I2</name>
+                    <dataType>PercentFloat32</dataType>
+                    <semantics>Describes the susceptibility to electro-optical detection. A summary percentage of entity susceptibility to detection by Image Intensifying sensors. An entity with zero percent signature would be invisible to image intensifiers (I2).</semantics>
+                </alternative>
+                <alternative>
+                    <enumerator>ThermalSignature</enumerator>
+                    <name>Thermal</name>
+                    <dataType>PercentFloat32</dataType>
+                    <semantics>Describes the susceptibility to electro-optical detection. A summary percentage of entity susceptibility to detection by thermal sensors. An entity  with zero percent signature would be invisible to thermal sensors.</semantics>
+                </alternative>
+                <alternative>
+                    <enumerator>HUMINTSignature</enumerator>
+                    <name>HUMINT</name>
+                    <dataType>PercentFloat32</dataType>
+                    <semantics>Describes the susceptibility to human intelligence (HUMINT), i.e. information collected and provided by human sources. A summary percentage of an entity's susceptibility to detection by human intelligence collectors. Zero percent signature means an entity is impervious to HUMINT.</semantics>
+                </alternative>
+                <alternative>
+                    <enumerator>ElectronicSignature</enumerator>
+                    <name>Electronic</name>
+                    <dataType>PercentFloat32</dataType>
+                    <semantics>Describes the susceptibility to electronic detection both as a summary value and by identifying aggregate sensors together with their operational status. A summary percentage of an entity's susceptibility to detection of its electronic emissions. Zero percent means that the aggregate has no electronic emissions.</semantics>
+                </alternative>
+                <encoding>HLAvariantRecord</encoding>
+                <semantics></semantics>
+            </variantRecordData>
+        </variantRecordDataTypes>
     </dataTypes>
     <notes>
         <note>
@@ -398,7 +452,7 @@ NETN-MRM FOM Module v1.2.0 was developed by MSG-106 and MSG-134 and released as 
 * Replaced `NETN_Aircraft` attribute `UniqueId` with NETN-BASE `HLAobjectRoot` attribute `UniqueId` 
 * Replaced `NETN_Aircraft` attribute `Status` with NETN-MRM `BaseEntity` attribute `Status` 
 * Replaced `NETN_Aircraft` attribute `SourceUnit` with NETN-MRM `BaseEntity` attribute `SourceAggregate` 
-* Replaced `NETN_Aircraft` attribute `EmbeddedUnitList` with `BaseEntity` attribute `HostedEntities` 
+* Removed `NETN_Aircraft` attribute `EmbeddedUnitList` 
 * Replaced `NETN_Aircraft` attribute `Callsign` with `BaseEntity` attribute `Callsign` 
 * Replaced `NETN_Aircraft` attribute `Activity` with NETN-ETR `BaseEntity` attribute `Activity` 
 * Replaced `NETN_Aircraft` attribute `Route` with NETN-ETR `BaseEntity` attribute `Route` 
@@ -409,7 +463,7 @@ NETN-MRM FOM Module v1.2.0 was developed by MSG-106 and MSG-134 and released as 
 * Replaced `NETN_AmphibiousVehicle` attribute `UniqueId` with NETN-BASE `HLAobjectRoot` attribute `UniqueId` 
 * Replaced `NETN_AmphibiousVehicle` attribute `Status` with NETN-MRM `BaseEntity` attribute `Status` 
 * Replaced `NETN_AmphibiousVehicle` attribute `SourceUnit` with NETN-MRM `BaseEntity` attribute `SourceAggregate` 
-* Replaced `NETN_AmphibiousVehicle` attribute `EmbeddedUnitList` with `BaseEntity` attribute `HostedEntities` 
+* Replaced `NETN_AmphibiousVehicle` attribute `EmbeddedUnitList` 
 * Replaced `NETN_AmphibiousVehicle` attribute `Callsign` with `BaseEntity` attribute `Callsign` 
 * Replaced `NETN_AmphibiousVehicle` attribute `Activity` with NETN-ETR `BaseEntity` attribute `Activity` 
 * Replaced `NETN_AmphibiousVehicle` attribute `Route` with NETN-ETR `BaseEntity` attribute `Route` 
@@ -420,7 +474,7 @@ NETN-MRM FOM Module v1.2.0 was developed by MSG-106 and MSG-134 and released as 
 * Replaced `NETN_GroundVehicle` attribute `UniqueId` with NETN-BASE `HLAobjectRoot` attribute `UniqueId` 
 * Replaced `NETN_GroundVehicle` attribute `Status` with NETN-MRM `BaseEntity` attribute `Status` 
 * Replaced `NETN_GroundVehicle` attribute `SourceUnit` with NETN-MRM `BaseEntity` attribute `SourceAggregate` 
-* Replaced `NETN_GroundVehicle` attribute `EmbeddedUnitList` with `BaseEntity` attribute `HostedEntities` 
+* Replaced `NETN_GroundVehicle` attribute `EmbeddedUnitList` 
 * Replaced `NETN_GroundVehicle` attribute `Callsign` with `BaseEntity` attribute `Callsign` 
 * Replaced `NETN_GroundVehicle` attribute `Activity` with NETN-ETR `BaseEntity` attribute `Activity` 
 * Replaced `NETN_GroundVehicle` attribute `Route` with NETN-ETR `BaseEntity` attribute `Route` 
@@ -431,7 +485,7 @@ NETN-MRM FOM Module v1.2.0 was developed by MSG-106 and MSG-134 and released as 
 * Replaced `NETN_MultiDomainPlatform` attribute `UniqueId` with NETN-BASE `HLAobjectRoot` attribute `UniqueId` 
 * Replaced `NETN_MultiDomainPlatform` attribute `Status` with NETN-MRM `BaseEntity` attribute `Status` 
 * Replaced `NETN_MultiDomainPlatform` attribute `SourceUnit` with NETN-MRM `BaseEntity` attribute `SourceAggregate` 
-* Replaced `NETN_MultiDomainPlatform` attribute `EmbeddedUnitList` with `BaseEntity` attribute `HostedEntities` 
+* Replaced `NETN_MultiDomainPlatform` attribute `EmbeddedUnitList` 
 * Replaced `NETN_MultiDomainPlatform` attribute `Callsign` with `BaseEntity` attribute `Callsign` 
 * Replaced `NETN_MultiDomainPlatform` attribute `Activity` with NETN-ETR `BaseEntity` attribute `Activity` 
 * Replaced `NETN_MultiDomainPlatform` attribute `Route` with NETN-ETR `BaseEntity` attribute `Route` 
@@ -442,7 +496,7 @@ NETN-MRM FOM Module v1.2.0 was developed by MSG-106 and MSG-134 and released as 
 * Replaced `NETN_Spacecraft` attribute `UniqueId` with NETN-BASE `HLAobjectRoot` attribute `UniqueId` 
 * Replaced `NETN_Spacecraft` attribute `Status` with NETN-MRM `BaseEntity` attribute `Status` 
 * Replaced `NETN_Spacecraft` attribute `SourceUnit` with NETN-MRM `BaseEntity` attribute `SourceAggregate` 
-* Replaced `NETN_Spacecraft` attribute `EmbeddedUnitList` with `BaseEntity` attribute `HostedEntities` 
+* Replaced `NETN_Spacecraft` attribute `EmbeddedUnitList` 
 * Replaced `NETN_Spacecraft` attribute `Callsign` with `BaseEntity` attribute `Callsign` 
 * Replaced `NETN_Spacecraft` attribute `Activity` with NETN-ETR `BaseEntity` attribute `Activity` 
 * Replaced `NETN_Spacecraft` attribute `Route` with NETN-ETR `BaseEntity` attribute `Route` 
@@ -453,7 +507,7 @@ NETN-MRM FOM Module v1.2.0 was developed by MSG-106 and MSG-134 and released as 
 * Replaced `NETN_SubmersibleVessel` attribute `UniqueId` with NETN-BASE `HLAobjectRoot` attribute `UniqueId` 
 * Replaced `NETN_SubmersibleVessel` attribute `Status` with NETN-MRM `BaseEntity` attribute `Status` 
 * Replaced `NETN_SubmersibleVessel` attribute `SourceUnit` with NETN-MRM `BaseEntity` attribute `SourceAggregate` 
-* Replaced `NETN_SubmersibleVessel` attribute `EmbeddedUnitList` with `BaseEntity` attribute `HostedEntities` 
+* Replaced `NETN_SubmersibleVessel` attribute `EmbeddedUnitList` 
 * Replaced `NETN_SubmersibleVessel` attribute `Callsign` with `BaseEntity` attribute `Callsign` 
 * Replaced `NETN_SubmersibleVessel` attribute `Activity` with NETN-ETR `BaseEntity` attribute `Activity` 
 * Replaced `NETN_SubmersibleVessel` attribute `Route` with NETN-ETR `BaseEntity` attribute `Route` 
@@ -464,7 +518,7 @@ NETN-MRM FOM Module v1.2.0 was developed by MSG-106 and MSG-134 and released as 
 * Replaced `NETN_SurfaceVessel` attribute `UniqueId` with NETN-BASE `HLAobjectRoot` attribute `UniqueId` 
 * Replaced `NETN_SurfaceVessel` attribute `Status` with NETN-MRM `BaseEntity` attribute `Status` 
 * Replaced `NETN_SurfaceVessel` attribute `SourceUnit` with NETN-MRM `BaseEntity` attribute `SourceAggregate` 
-* Replaced `NETN_SurfaceVessel` attribute `EmbeddedUnitList` with `BaseEntity` attribute `HostedEntities` 
+* Replaced `NETN_SurfaceVessel` attribute `EmbeddedUnitList` 
 * Replaced `NETN_SurfaceVessel` attribute `Callsign` with `BaseEntity` attribute `Callsign` 
 * Replaced `NETN_SurfaceVessel` attribute `Activity` with NETN-ETR `BaseEntity` attribute `Activity` 
 * Replaced `NETN_SurfaceVessel` attribute `Route` with NETN-ETR `BaseEntity` attribute `Route` 
@@ -494,7 +548,7 @@ NETN-MRM FOM Module v1.2.0 was developed by MSG-106 and MSG-134 and released as 
 * Removed `NETN_CulturalFeature` object class 
 * Replaced `NETN_CulturalFeature` attribute `UniqueId` with NETN-BASE `HLAobjectRoot` attribute `UniqueId` 
 * Replaced `NETN_CulturalFeature` attribute `Status` with NETN-MRM `BaseEntity` attribute `Status` 
-* Replaced `NETN_CulturalFeature` attribute `EmbeddedUnitList` with `BaseEntity` attribute `HostedEntities` 
+* Replaced `NETN_CulturalFeature` attribute `EmbeddedUnitList` 
 * Replaced `NETN_CulturalFeature` attribute `Callsign` with `BaseEntity` attribute `Callsign` 
 * Replaced `NETN_CulturalFeature` attribute `Activity` with NETN-ETR `BaseEntity` attribute `Activity` 
 * Replaced `NETN_CulturalFeature` attribute `SymbolId` with `BaseEntity` attribute `SymbolId` 
@@ -508,10 +562,21 @@ NETN-MRM FOM Module v1.2.0 was developed by MSG-106 and MSG-134 and released as 
  
 * Added `BaseEntity` attribute `SymbolAmplification` 
 * Added `BaseEntity` attribute `HostEntity` 
+* Added `BaseEntity` attribute `Protection` 
+* Added `BaseEntity` attribute `CaptureStatus` 
  
-* Added `AggregateEntity` object class 
+* Added `AggregateEntity` object class (from NETN_Aggregate in NETN-MRM)
+* Added `BaseEntity` attribute `HostEntitiy`
+* Added `BaseEntity` attribute `SymbolId` 
+* Added `BaseEntity` attribute `Callsign` 
+* Added `AggregateEntity` attribute `Echelon` 
+* Added `BaseEntity` attribute `Signatures` 
+* Added `AggregateEntity` attribute `CombatValue` 
+* Added `BaseEntity` attribute `Protection` 
+* Added `BaseEntity` attribute `CaptureStatus` 
+* Added `AggregateEntity` attribute `WeaponsControlOrder` 
  
-* Added datatype `RangeFloat32` 
+* Added datatype `RangeFloat32`
 * Added datatype `WeaponControlOrderEnum8` 
 * Added datatype `CaptureStatusEnum8` 
 * Added datatype `SensorStateEnum32` 

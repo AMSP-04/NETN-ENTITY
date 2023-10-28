@@ -1,159 +1,109 @@
-## Changelog NETN-ENTITY
+## Changelog NETN-BASE
 
-### v1.2 - First version developed by MSG-134 for NETN FOM v2.0. Object classes and datatypes derived from deprecated NETN FOM v 1.0 module AggDeagg.
+### v1.0 - Initial version developed by MSG-106 and MSG-134. Release included in NETN FOM v2.0
 
-
-
-### v2.0 - Updated version developed by MSG-163 for NETN FOM v3.0 renamed NETN-Physical
-
-* Added attribute `SourceUnit` to all NETN-Physical platform and lifeform object classes. 
-* Added attribute `Route` to all NETN-Physical platform, munition and lifeform object classes. 
-* Added attribute `Destination` to all NETN-Physical platform, munition and lifeform object classes. 
-* Renamed attribute `UniqueID` to `UniqueId` for compliance with naming convensions. 
-* Added attribute `SymbolId` to all NETN-Physical platform, lifeform, cultural feature and munition object classes. 
-* Renamed object class `SubmersibleVehicle` to `SubmersibleVessel`. 
+* v1.0.0 - First version in NETN FOM v2 
+* v1.0.1 - Added array data type: ArrayOfWorldLocation3 (moved from NETN_Aggregate FOM module) 
+* v1.0.2 - Renamed data type, new name: ArrayOfWorldLocationStruct3. Updated References, Dependency 
  
-### Changes for v1.2.0 
-NETN-MRM FOM Module v1.2.0 was developed by MSG-106 and MSG-134 and released as part of NETN FOM v2.0 in AMSP-04 Ed A. 
  
-* Added object classes and datatypes from FOM modules in NETN FOM v1 
-* Added object class `NETN_CulturalFeature` 
-* Added  object class `NETN_Munition` 
- 
-* Added attribute Symbol to all object classes 
-* Changed from Reliable to BestEffort on some attributes to get a common transport type
+Previous history 
+Common datatypes were defined in NETN FOM v1.0 modules NETN_AggDeagg_v1.07_2010, NETN_Service_Consumer_Provider_v1.0.3_2010 and NETN_Logistics_v1.1.2_2010.
 
 
-### v3.0 - Updated version developed by MSG-191 for NETN FOM v4.0 renamed NETN-ENTITY
+### v2.0 - Updated version developed by MSG-163. Release included in NETN FOM v3.0
 
-* Renamed module NETN-ENTITY 
+* Changed `modelIdentification` `securityClassification` from `unclassified` to `Not Classified` 
+* Changed `modelIdentification` `other` to include license information 
+* Changed `modelIdentification` `useHistory` to only include formally released versions 
+* Added datatype `AltitudeMeterFloat64` 
+* Added datatype `DegreesPerSecondFloat32` 
+* Added datatype `DirectionDegreesFloat32` 
+* Added datatype `DraughtMeterFloat32` 
+* Modified datatype `TimeSecInt64` to `EpochTimeSecInt64` 
+* Added datatype `IMOType` 
+* Added datatype `LatLongDegreesFloat64` 
+* Added datatype `MassConcentrationFloat32` 
+* Added datatype `MassDensityFloat32` 
+* Added datatype `MIDType` 
+* Added datatype `PercentFloat64` 
+* Updated datatype `QuantityFloat32` 
+* Added datatype `QuantityFloat64` 
+* Added datatype `QuantityInt32` 
+* Added datatype `ShipTypeType` 
+* Added datatype `TimeSecInt32` 
+* Added datatype `CancellationReasonEnum32` 
+* Added datatype `EchelonEnum32` 
+* Added datatype `EchelonEnum32` 
+* Added datatype `SymbolStandardEnum32` 
+* Added datatype `GeoLocationTypeEnum32` 
+* Added datatype `ArrayOfStringType` 
+* Added datatype `ArrayOfText64` 
+* Added datatype `FederateName` 
+* Removed datatype `ArrayOfWorldLocationStruct2` 
+* Removed datatype `ArrayOfWorldLocationStruct3` 
+* Added datatype `GeodeticPath` 
+* Added datatype `GeodeticPolygon` 
+* Added datatype `SymbolIdentifier15` 
+* Added datatype `SymbolIdentifier30` 
+* Added datatype `Text64` 
+* Added datatype `TransactionId` 
+* Added datatype `UUID` 
+* Added datatype `GeocentricCircle` 
+* Added datatype `GeodeticCircle` 
+* Added datatype `GeodeticLocation` 
+* Added datatype `GeodeticQuadrangle` 
+* Added datatype `GeodeticPoint` 
+* Added datatype `AreaVariantStruct` 
+* Added datatype `PathVariantStruct` 
+* Added datatype `PointVariantStruct` 
+* Added datatype `SymbolVariantStruct`
+
+
+### v3.0 - Updated version developed by MSG-191. The release is included in NETN FOM v4.0
+
+* Added `HLAobjectRoot` attribute `UniqueId` 
+* Added `HLAobjectRoot` attribute `Time` 
+* Added `HLAinteractionRoot` attribute `UniqueId` 
+* Added `HLAinteractionRoot` attribute `FederateApplication` 
+* Added `HLAinteractionRoot` attribute `Time` 
  
-* Removed `NETN_Aircraft` object class 
-* Replaced `NETN_Aircraft` attribute `UniqueId` with NETN-BASE `HLAobjectRoot` attribute `UniqueId` 
-* Replaced `NETN_Aircraft` attribute `Status` with NETN-MRM `BaseEntity` attribute `Status` 
-* Replaced `NETN_Aircraft` attribute `SourceUnit` with NETN-MRM `BaseEntity` attribute `SourceAggregate` 
-* Replaced `NETN_Aircraft` attribute `EmbeddedUnitList` with `BaseEntity` attribute `HostedEntities` 
-* Replaced `NETN_Aircraft` attribute `Callsign` with `BaseEntity` attribute `Callsign` 
-* Replaced `NETN_Aircraft` attribute `Activity` with NETN-ETR `BaseEntity` attribute `Activity` 
-* Replaced `NETN_Aircraft` attribute `Route` with NETN-ETR `BaseEntity` attribute `Route` 
-* Replaced `NETN_Aircraft` attribute `Destination` with NETN-ETR `BaseEntity` attribute `Destination` 
-* Replaced `NETN_Aircraft` attribute `SymbolId` with `BaseEntity` attribute `SymbolId` 
+* Removed datatype `AreaVariantStruct` 
+* Removed datatype `PathVariantStruct` 
+* Removed datatype `PointVariantStruct` 
+* Removed datatype `PointTypeEnum32` 
+* Removed datatype `PathTypeEnum32` 
+* Removed datatype `QuantityFloat32` 
  
-* Removed `NETN_AmphibiousVehicle` object class 
-* Replaced `NETN_AmphibiousVehicle` attribute `UniqueId` with NETN-BASE `HLAobjectRoot` attribute `UniqueId` 
-* Replaced `NETN_AmphibiousVehicle` attribute `Status` with NETN-MRM `BaseEntity` attribute `Status` 
-* Replaced `NETN_AmphibiousVehicle` attribute `SourceUnit` with NETN-MRM `BaseEntity` attribute `SourceAggregate` 
-* Replaced `NETN_AmphibiousVehicle` attribute `EmbeddedUnitList` with `BaseEntity` attribute `HostedEntities` 
-* Replaced `NETN_AmphibiousVehicle` attribute `Callsign` with `BaseEntity` attribute `Callsign` 
-* Replaced `NETN_AmphibiousVehicle` attribute `Activity` with NETN-ETR `BaseEntity` attribute `Activity` 
-* Replaced `NETN_AmphibiousVehicle` attribute `Route` with NETN-ETR `BaseEntity` attribute `Route` 
-* Replaced `NETN_AmphibiousVehicle` attribute `Destination` with NETN-ETR `BaseEntity` attribute `Destination` 
-* Replaced `NETN_AmphibiousVehicle` attribute `SymbolId` with `BaseEntity` attribute `SymbolId` 
+* Replaced datatype `NETN_SupplyStruct` with `SupplyStatusStruct` 
+* Replaced datatype `ArrayOfWorldLocationStruct` with `LocationStructArray` 
+* Replaced datatype `NETN_ArrayOfSupplyStruct` with `ArrayOfSupplyStatus` 
+* Removed datatype `TransactionId` 
+* Removed datatype `UuidArrayOfHLAbyte16` 
+* Removed datatype `ArrayOfText64` 
+* Removed datatype `GeodeticPath` 
+* Removed datatype `TimeSecInt32` 
+* Removed datatype `GeoLocationTypeEnum32` 
+* Removed datatype `ArrayOfString` 
+* Removed datatype `Text64` 
+* Replaced datatype `PercentFloat64` with `PercentFloat32` 
+* Replaced datatype `EpochTimeSecInt64`  with `ScenarioTime` 
  
-* Removed `NETN_GroundVehicle` object class 
-* Replaced `NETN_GroundVehicle` attribute `UniqueId` with NETN-BASE `HLAobjectRoot` attribute `UniqueId` 
-* Replaced `NETN_GroundVehicle` attribute `Status` with NETN-MRM `BaseEntity` attribute `Status` 
-* Replaced `NETN_GroundVehicle` attribute `SourceUnit` with NETN-MRM `BaseEntity` attribute `SourceAggregate` 
-* Replaced `NETN_GroundVehicle` attribute `EmbeddedUnitList` with `BaseEntity` attribute `HostedEntities` 
-* Replaced `NETN_GroundVehicle` attribute `Callsign` with `BaseEntity` attribute `Callsign` 
-* Replaced `NETN_GroundVehicle` attribute `Activity` with NETN-ETR `BaseEntity` attribute `Activity` 
-* Replaced `NETN_GroundVehicle` attribute `Route` with NETN-ETR `BaseEntity` attribute `Route` 
-* Replaced `NETN_GroundVehicle` attribute `Destination` with NETN-ETR `BaseEntity` attribute `Destination` 
-* Replaced `NETN_GroundVehicle` attribute `SymbolId` with `BaseEntity` attribute `SymbolId` 
+* Added datatype `EquipmentSymbolAmplificationStruct` 
+* Added datatype `UnitSymbolAmplificationStruct` 
+* Added datatype `InstallationSymbolAmplificationStruct` 
+* Added datatype `TimeMillisecondIn64` 
+* Added datatype `ScenarioTime` 
+* Added datatype `HostilityStatusCodeEnum32` moved from NETN-ORG 
+* Added datatype `DamageStatusEnum32` 
+* Added datatype `LocationStruct` 
+* Added datatype `SymbolAmplificationVariant` 
  
-* Removed `NETN_MultiDomainPlatform` object class 
-* Replaced `NETN_MultiDomainPlatform` attribute `UniqueId` with NETN-BASE `HLAobjectRoot` attribute `UniqueId` 
-* Replaced `NETN_MultiDomainPlatform` attribute `Status` with NETN-MRM `BaseEntity` attribute `Status` 
-* Replaced `NETN_MultiDomainPlatform` attribute `SourceUnit` with NETN-MRM `BaseEntity` attribute `SourceAggregate` 
-* Replaced `NETN_MultiDomainPlatform` attribute `EmbeddedUnitList` with `BaseEntity` attribute `HostedEntities` 
-* Replaced `NETN_MultiDomainPlatform` attribute `Callsign` with `BaseEntity` attribute `Callsign` 
-* Replaced `NETN_MultiDomainPlatform` attribute `Activity` with NETN-ETR `BaseEntity` attribute `Activity` 
-* Replaced `NETN_MultiDomainPlatform` attribute `Route` with NETN-ETR `BaseEntity` attribute `Route` 
-* Replaced `NETN_MultiDomainPlatform` attribute `Destination` with NETN-ETR `BaseEntity` attribute `Destination` 
-* Replaced `NETN_MultiDomainPlatform` attribute `SymbolId` with `BaseEntity` attribute `SymbolId` 
+* Added datatype `TransmitterOperationalStatusEnum8` 
+* Added datatype `ResourceStatusStruct` 
+* Added datatype `ArrayOfResourceStatus` 
  
-* Removed `NETN_Spacecraft` object class 
-* Replaced `NETN_Spacecraft` attribute `UniqueId` with NETN-BASE `HLAobjectRoot` attribute `UniqueId` 
-* Replaced `NETN_Spacecraft` attribute `Status` with NETN-MRM `BaseEntity` attribute `Status` 
-* Replaced `NETN_Spacecraft` attribute `SourceUnit` with NETN-MRM `BaseEntity` attribute `SourceAggregate` 
-* Replaced `NETN_Spacecraft` attribute `EmbeddedUnitList` with `BaseEntity` attribute `HostedEntities` 
-* Replaced `NETN_Spacecraft` attribute `Callsign` with `BaseEntity` attribute `Callsign` 
-* Replaced `NETN_Spacecraft` attribute `Activity` with NETN-ETR `BaseEntity` attribute `Activity` 
-* Replaced `NETN_Spacecraft` attribute `Route` with NETN-ETR `BaseEntity` attribute `Route` 
-* Replaced `NETN_Spacecraft` attribute `Destination` with NETN-ETR `BaseEntity` attribute `Destination` 
-* Replaced `NETN_Spacecraft` attribute `SymbolId` with `BaseEntity` attribute `SymbolId` 
+* Changed representation of `QuantityInt32` to `HLAinteger32BE` 
  
-* Removed `NETN_SubmersibleVessel` object class 
-* Replaced `NETN_SubmersibleVessel` attribute `UniqueId` with NETN-BASE `HLAobjectRoot` attribute `UniqueId` 
-* Replaced `NETN_SubmersibleVessel` attribute `Status` with NETN-MRM `BaseEntity` attribute `Status` 
-* Replaced `NETN_SubmersibleVessel` attribute `SourceUnit` with NETN-MRM `BaseEntity` attribute `SourceAggregate` 
-* Replaced `NETN_SubmersibleVessel` attribute `EmbeddedUnitList` with `BaseEntity` attribute `HostedEntities` 
-* Replaced `NETN_SubmersibleVessel` attribute `Callsign` with `BaseEntity` attribute `Callsign` 
-* Replaced `NETN_SubmersibleVessel` attribute `Activity` with NETN-ETR `BaseEntity` attribute `Activity` 
-* Replaced `NETN_SubmersibleVessel` attribute `Route` with NETN-ETR `BaseEntity` attribute `Route` 
-* Replaced `NETN_SubmersibleVessel` attribute `Destination` with NETN-ETR `BaseEntity` attribute `Destination` 
-* Replaced `NETN_SubmersibleVessel` attribute `SymbolId` with `BaseEntity` attribute `SymbolId` 
- 
-* Removed `NETN_SurfaceVessel` object class 
-* Replaced `NETN_SurfaceVessel` attribute `UniqueId` with NETN-BASE `HLAobjectRoot` attribute `UniqueId` 
-* Replaced `NETN_SurfaceVessel` attribute `Status` with NETN-MRM `BaseEntity` attribute `Status` 
-* Replaced `NETN_SurfaceVessel` attribute `SourceUnit` with NETN-MRM `BaseEntity` attribute `SourceAggregate` 
-* Replaced `NETN_SurfaceVessel` attribute `EmbeddedUnitList` with `BaseEntity` attribute `HostedEntities` 
-* Replaced `NETN_SurfaceVessel` attribute `Callsign` with `BaseEntity` attribute `Callsign` 
-* Replaced `NETN_SurfaceVessel` attribute `Activity` with NETN-ETR `BaseEntity` attribute `Activity` 
-* Replaced `NETN_SurfaceVessel` attribute `Route` with NETN-ETR `BaseEntity` attribute `Route` 
-* Replaced `NETN_SurfaceVessel` attribute `Destination` with NETN-ETR `BaseEntity` attribute `Destination` 
-* Replaced `NETN_SurfaceVessel` attribute `SymbolId` with `BaseEntity` attribute `SymbolId` 
- 
-* Removed `NETN_Human` object class 
-* Replaced `NETN_Human` attribute `UniqueId` with NETN-BASE `HLAobjectRoot` attribute `UniqueId` 
-* Replaced `NETN_Human` attribute `Status` with NETN-MRM `BaseEntity` attribute `Status` 
-* Replaced `NETN_Human` attribute `SourceUnit` with NETN-MRM `BaseEntity` attribute `SourceAggregate` 
-* Replaced `NETN_Human` attribute `Callsign` with `BaseEntity` attribute `Callsign` 
-* Replaced `NETN_Human` attribute `Activity` with NETN-ETR `BaseEntity` attribute `Activity` 
-* Replaced `NETN_Human` attribute `Route` with NETN-ETR `BaseEntity` attribute `Route` 
-* Replaced `NETN_Human` attribute `Destination` with NETN-ETR `BaseEntity` attribute `Destination` 
-* Replaced `NETN_Human` attribute `SymbolId` with `BaseEntity` attribute `SymbolId` 
- 
-* Removed `NETN_NonHuman` object class 
-* Replaced `NETN_NonHuman` attribute `UniqueId` with NETN-BASE `HLAobjectRoot` attribute `UniqueId` 
-* Replaced `NETN_NonHuman` attribute `Status` with NETN-MRM `BaseEntity` attribute `Status` 
-* Replaced `NETN_NonHuman` attribute `SourceUnit` with NETN-MRM `BaseEntity` attribute `SourceAggregate` 
-* Replaced `NETN_NonHuman` attribute `Callsign` with `BaseEntity` attribute `Callsign` 
-* Replaced `NETN_NonHuman` attribute `Activity` with NETN-ETR `BaseEntity` attribute `Activity` 
-* Replaced `NETN_NonHuman` attribute `Route` with NETN-ETR `BaseEntity` attribute `Route` 
-* Replaced `NETN_NonHuman` attribute `Destination` with NETN-ETR `BaseEntity` attribute `Destination` 
-* Replaced `NETN_NonHuman` attribute `SymbolId` with `BaseEntity` attribute `SymbolId` 
- 
-* Removed `NETN_CulturalFeature` object class 
-* Replaced `NETN_CulturalFeature` attribute `UniqueId` with NETN-BASE `HLAobjectRoot` attribute `UniqueId` 
-* Replaced `NETN_CulturalFeature` attribute `Status` with NETN-MRM `BaseEntity` attribute `Status` 
-* Replaced `NETN_CulturalFeature` attribute `EmbeddedUnitList` with `BaseEntity` attribute `HostedEntities` 
-* Replaced `NETN_CulturalFeature` attribute `Callsign` with `BaseEntity` attribute `Callsign` 
-* Replaced `NETN_CulturalFeature` attribute `Activity` with NETN-ETR `BaseEntity` attribute `Activity` 
-* Replaced `NETN_CulturalFeature` attribute `SymbolId` with `BaseEntity` attribute `SymbolId` 
- 
-* Removed `NETN_Munition` object class 
-* Replaced `NETN_Munition` attribute `UniqueId` with NETN-BASE `HLAobjectRoot` attribute `UniqueId` 
-* Replaced `NETN_Munition` attribute `Status` with NETN-MRM `BaseEntity` attribute `Status` 
-* Replaced `NETN_Munition` attribute `Route` with NETN-ETR `BaseEntity` attribute `Route` 
-* Replaced `NETN_Munition` attribute `Destination` with NETN-ETR `BaseEntity` attribute `Destination` 
-* Replaced `NETN_Munition` attribute `SymbolId` with `BaseEntity` attribute `SymbolId` 
- 
-* Added `BaseEntity` attribute `SymbolAmplification` 
-* Added `BaseEntity` attribute `HostEntity` 
- 
-* Added `AggregateEntity` object class 
- 
-* Added datatype `RangeFloat32` 
-* Added datatype `WeaponControlOrderEnum8` 
-* Added datatype `CaptureStatusEnum8` 
-* Added datatype `SensorStateEnum32` 
-* Added datatype `ArrayOfSensorStruct` 
-* Added datatype `VisualSignatureStruct` 
-* Added datatype `HUMINTSignatureStruct` 
-* Added datatype `ElectronicSignatureStruct` 
-* Added datatype `SensorStateStruct` 
- 
-* Changed datatype of FixedRecord SensorStruct field SensorID to UUID
+* Replaced datatype `LatLongDegreesFloat64` with `LatitudeFloat64` and `LongitudeFloat64`
 
