@@ -2,7 +2,7 @@
 # NETN-ENTITY
 |Version| Date| Dependencies|
 |---|---|---|
-|v3.0|2023-10-25|NETN-BASE|
+|v3.0|2023-10-28|NETN-BASE|
 
 The NETN-ENTITY FOM Module provides a standard interface for representing simulation entities in a federated distributed simulation. The module extends the RPR-FOM standard SISO-STD-001-2015 with additional attributes for simulated physical and aggregated entities.
 
@@ -60,7 +60,6 @@ Note that only datatypes defined in this FOM Module are listed below. Please ref
 |SensorStateStruct|Defines a sensor's operational status, damage status, and coverage.|
 |SignatureTypeEnum8|Different types of signatures.|
 |SignatureVariant|Different types of signatures that describes detectability using different types of sensors, e.g. Direct Visual Optics, Image Intensifiers, Thermal, etc.|
-|SymbolStruct|Symbol Id and additional symbol amplification data.|
 |VisualSignatureStruct|Specifies the visual structure|
 |WeaponControlOrderEnum8|The enumerations for weapon control|
         
@@ -88,7 +87,6 @@ Note that only datatypes defined in this FOM Module are listed below. Please ref
 |ElectronicSignatureStruct|ElectronicSignaturePercent, SensorArray|An entity's susceptibility to detection of its electronic emissions.|
 |HUMINTSignatureStruct|HUMINTSignaturePercent|Describes the entity's susceptibility to human intelligence (HUMINT), i.e. information collected and provided by human sources.|
 |SensorStateStruct|SensorId, SensorType, SensorStateEnum, SensorDamageState, SensorCoverage|Defines a sensor's operational status, damage status, and coverage.|
-|SymbolStruct|Id, Amplification|Symbol Id and additional symbol amplification data.|
 |VisualSignatureStruct|DVOSignaturePercent, I2SignaturePercent, ThermalSignaturePercent|Specifies the visual structure|
         
 ### Variant Record Datatypes

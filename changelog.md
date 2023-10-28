@@ -150,7 +150,7 @@ NETN-MRM FOM Module v1.2.0 was developed by MSG-106 and MSG-134 and released as 
 * Added `BaseEntity` attribute `Protection` 
 * Added `AggregateEntity` attribute `WeaponsControlOrder` 
  
-* Added datatype `SymbolStruct` 
+
 * Added datatype `RangeFloat32` 
 * Added datatype `WeaponControlOrderEnum8` 
 * Added datatype `SensorStateEnum32` 
