@@ -340,21 +340,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <semantics>The maximum range of the sensor</semantics>
                 </field>
             </fixedRecordData>
-            <fixedRecordData>
-                <name>SymbolStruct</name>
-                <encoding>HLAfixedRecord</encoding>
-                <semantics>Symbol Id and additional symbol amplification data.</semantics>
-                <field>
-                    <name>Id</name>
-                    <dataType>SymbolIdentifier</dataType>
-                    <semantics>A symbol identifier. If not provided, derive the default value from the `BaseEntity` attribute `EntityType` and `PhysicalEntity` or `AggregateEntity` attribute `ForceIdentifier`.</semantics>
-                </field>
-                <field>
-                    <name>Amplification</name>
-                    <dataType>SymbolAmplificationVariant</dataType>
-                    <semantics>Additional symbol amplification data.</semantics>
-                </field>
-            </fixedRecordData>
+
         </fixedRecordDataTypes>
         <variantRecordDataTypes>
             <variantRecordData>
@@ -542,7 +528,7 @@ NETN-MRM FOM Module v1.2.0 was developed by MSG-106 and MSG-134 and released as 
 * Added `BaseEntity` attribute `Protection` 
 * Added `AggregateEntity` attribute `WeaponsControlOrder` 
  
-* Added datatype `SymbolStruct` 
+
 * Added datatype `RangeFloat32` 
 * Added datatype `WeaponControlOrderEnum8` 
 * Added datatype `SensorStateEnum32` 
