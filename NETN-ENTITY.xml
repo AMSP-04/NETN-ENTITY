@@ -70,29 +70,29 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Optional: The callsign is the unique-designator symbol-amplifier. The default is using the RPR-FOM `PhysicalEntity` attribute `Marking` or the `AggregateEntity` attribute `AggregateMarking`. Max length 21 characters.</semantics>
+                    <semantics>Optional: The callsign is a unique-designator. The default is using the RPR-FOM `PhysicalEntity` attribute `Marking` or the `AggregateEntity` attribute `AggregateMarking`. Max length 21 characters.</semantics>
                 </attribute>
                 <attribute>
-                    <name>SymbolId</name>
-                    <dataType>SymbolIdentifier</dataType>
+                    <name>Symbol</name>
+                    <dataType>SymbolStruct</dataType>
                     <updateType>Conditional</updateType>
                     <updateCondition>On Change</updateCondition>
                     <ownership>DivestAcquire</ownership>
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Optional. A symbol identifier. If not provided, derive the default value from the `BaseEntity` attribute `EntityType` and `PhysicalEntity` or `AggregateEntity` attribute `ForceIdentifier`.</semantics>
+                    <semantics>Optional. A symbol identifier and additional amplification. If not provided, derive the default value from the `BaseEntity` attribute `EntityType` and `PhysicalEntity` or `AggregateEntity` attribute `ForceIdentifier`.</semantics>
                 </attribute>
                 <attribute>
-                    <name>SymbolAmplification</name>
-                    <dataType>SymbolAmplificationVariant</dataType>
+                    <name>HostEntity</name>
+                    <dataType>UUID</dataType>
                     <updateType>Conditional</updateType>
                     <updateCondition>On change</updateCondition>
                     <ownership>DivestAcquire</ownership>
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Optional: Additional symbol amplification data.</semantics>
+                    <semantics>Optional. Reference to the simulation entity this platform is mounted on or embedded in. The default is no host entity (all zeros UUID).</semantics>
                 </attribute>
                 <attribute>
                     <name>Protection</name>
@@ -103,18 +103,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <sharing>Publish</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Optional. The cover status describes the entity's protection from the effects of weapons fire. The default is 0% - fully affected by weapon fire.</semantics>
-                </attribute>
-                <attribute>
-                    <name>CaptureStatus</name>
-                    <dataType>CaptureStatusEnum8</dataType>
-                    <updateType>Conditional</updateType>
-                    <updateCondition>On change</updateCondition>
-                    <ownership>DivestAcquire</ownership>
-                    <sharing>PublishSubscribe</sharing>
-                    <transportation>HLAreliable</transportation>
-                    <order>Receive</order>
-                    <semantics>Optional: The status of an entity's level of control or influence over its activities. The default is Not-Captured.</semantics>
+                    <semantics>Optional. The protection describes the entity's cover status from the effects of weapons fire. The default is 0% - fully affected by weapon fire.</semantics>
                 </attribute>
                 <attribute>
                     <name>Signatures</name>
@@ -137,17 +126,6 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
                     <semantics>Optional: A set of sensors associated with the entity.</semantics>
-                </attribute>
-                <attribute>
-                    <name>HostEntity</name>
-                    <dataType>UUID</dataType>
-                    <updateType>Conditional</updateType>
-                    <updateCondition>On change</updateCondition>
-                    <ownership>DivestAcquire</ownership>
-                    <sharing>PublishSubscribe</sharing>
-                    <transportation>HLAreliable</transportation>
-                    <order>Receive</order>
-                    <semantics>Optional. Reference to the simulation entity this platform is mounted on or embedded in. The default is no host entity (all zeros UUID).</semantics>
                 </attribute>
                 <objectClass>
                     <name>AggregateEntity</name>
@@ -221,27 +199,6 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                 <enumerator>
                     <name>WeaponsTight</name>
                     <value>2</value>
-                </enumerator>
-            </enumeratedData>
-            <enumeratedData>
-                <name>CaptureStatusEnum8</name>
-                <representation>HLAoctet</representation>
-                <semantics>The status of a simulated entity concerning their control or influence over their activities.</semantics>
-                <enumerator>
-                    <name>Not-Captured</name>
-                    <value>1</value>
-                </enumerator>
-                <enumerator>
-                    <name>Captured</name>
-                    <value>2</value>
-                </enumerator>
-                <enumerator>
-                    <name>AttemptingSurrender</name>
-                    <value>3</value>
-                </enumerator>
-                <enumerator>
-                    <name>Other</name>
-                    <value>0</value>
                 </enumerator>
             </enumeratedData>
             <enumeratedData>
@@ -381,6 +338,21 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <name>SensorCoverage</name>
                     <dataType>RangeFloat32</dataType>
                     <semantics>The maximum range of the sensor</semantics>
+                </field>
+            </fixedRecordData>
+            <fixedRecordData>
+                <name>SymbolStruct</name>
+                <encoding>HLAfixedRecord</encoding>
+                <semantics>Symbol Id and additional symbol amplification data.</semantics>
+                <field>
+                    <name>Id</name>
+                    <dataType>SymbolIdentifier</dataType>
+                    <semantics>A symbol identifier. If not provided, derive the default value from the `BaseEntity` attribute `EntityType` and `PhysicalEntity` or `AggregateEntity` attribute `ForceIdentifier`.</semantics>
+                </field>
+                <field>
+                    <name>Amplification</name>
+                    <dataType>SymbolAmplificationVariant</dataType>
+                    <semantics>Additional symbol amplification data.</semantics>
                 </field>
             </fixedRecordData>
         </fixedRecordDataTypes>
@@ -560,25 +532,19 @@ NETN-MRM FOM Module v1.2.0 was developed by MSG-106 and MSG-134 and released as 
 * Replaced `NETN_Munition` attribute `Destination` with NETN-ETR `BaseEntity` attribute `Destination` 
 * Replaced `NETN_Munition` attribute `SymbolId` with `BaseEntity` attribute `SymbolId` 
  
-* Added `BaseEntity` attribute `SymbolAmplification` 
-* Added `BaseEntity` attribute `HostEntity` 
-* Added `BaseEntity` attribute `Protection` 
-* Added `BaseEntity` attribute `CaptureStatus` 
- 
-* Added `AggregateEntity` object class (from NETN_Aggregate in NETN-MRM)
-* Added `BaseEntity` attribute `HostEntitiy`
-* Added `BaseEntity` attribute `SymbolId` 
+* Added `AggregateEntity` object class (from NETN_Aggregate in NETN-MRM) 
+* Added `BaseEntity` attribute `HostEntitiy` 
+* Added `BaseEntity` attribute `Symbol` 
 * Added `BaseEntity` attribute `Callsign` 
 * Added `AggregateEntity` attribute `Echelon` 
 * Added `BaseEntity` attribute `Signatures` 
 * Added `AggregateEntity` attribute `CombatValue` 
 * Added `BaseEntity` attribute `Protection` 
-* Added `BaseEntity` attribute `CaptureStatus` 
 * Added `AggregateEntity` attribute `WeaponsControlOrder` 
  
-* Added datatype `RangeFloat32`
+* Added datatype `SymbolStruct` 
+* Added datatype `RangeFloat32` 
 * Added datatype `WeaponControlOrderEnum8` 
-* Added datatype `CaptureStatusEnum8` 
 * Added datatype `SensorStateEnum32` 
 * Added datatype `ArrayOfSensorStruct` 
 * Added datatype `VisualSignatureStruct` 

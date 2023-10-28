@@ -27,11 +27,12 @@ A base class of aggregate and discrete scenario domain participants. The BaseEnt
 
 |Attribute|Datatype|Semantics|
 |---|---|---|
-|SymbolId|SymbolIdentifier|Optional. A symbol identifier. If not provided, derive the default value from the `BaseEntity` attribute `EntityType` and `PhysicalEntity` or `AggregateEntity` attribute `ForceIdentifier`.|
-|SymbolAmplification|SymbolAmplificationVariant|Optional: Additional symbol amplification data.|
-|Callsign|Text21|Optional: The callsign is the unique-designator symbol-amplifier. The default is using the RPR-FOM `PhysicalEntity` attribute `Marking` or the `AggregateEntity` attribute `AggregateMarking`.|
+|Callsign|HLAunicodeString|Optional: The callsign is a unique-designator. The default is using the RPR-FOM `PhysicalEntity` attribute `Marking` or the `AggregateEntity` attribute `AggregateMarking`. Max length 21 characters.|
+|Symbol|SymbolStruct|Optional. A symbol identifier and additional amplification. If not provided, derive the default value from the `BaseEntity` attribute `EntityType` and `PhysicalEntity` or `AggregateEntity` attribute `ForceIdentifier`.|
 |HostEntity|UUID|Optional. Reference to the simulation entity this platform is mounted on or embedded in. The default is no host entity (all zeros UUID).|
-|HostedEntities|ArrayOfUuid|Optional. Reference to simulation entities mounted on or embedded in a `CulturalFeature`, `Platform`, or `AggregateEntity` simulation entity.|
+|Protection|PercentFloat32|Optional. The protection describes the entity's cover status from the effects of weapons fire. The default is 0% - fully affected by weapon fire.|
+|Signatures|ArrayOfSignatures|Optional: A set of signatures to characterize this entity's susceptibility to detection.|
+|Sensors|ArrayOfSensors|Optional: A set of sensors associated with the entity.|
 
 ### AggregateEntity
 
@@ -39,13 +40,8 @@ A group of one or more separate objects that operate together as part of an orga
 
 |Attribute|Datatype|Semantics|
 |---|---|---|
-|VisualSignature|VisualSignatureStruct|Optional: Describes the susceptibility to electro-optical detection.|
-|HUMINTSignature|HUMINTSignatureStruct|Optional: Describes the susceptibility to human intelligence (HUMINT), i.e. information collected and provided by human sources.|
-|ElectronicSignature|ElectronicSignatureStruct|Optional: Describes the susceptibility to electronic detection both as a summary value and by identifying aggregate sensors together with their operational status.|
-|CombatValue|PercentFloat32|Optional. A summary value of the effectiveness (the level of training, leadership, morale, personnel and equipment operational status). The default value is 100%.|
-|CoverStatus|PercentFloat32|Optional. The cover status describes the entity's protection from the effects of weapons fire. The default is 0% - fully affected by weapon fire.|
-|CaptureStatus|CaptureStatusEnum8|Optional: The status of an entity's level of control or influence over its activities. The default is Not-Captured.|
 |Echelon|EchelonEnum32|Optional. Use the echelon symbol-modifier to specify the size of the AggregateEntity (level of command).|
+|CombatValue|PercentFloat32|Optional. A summary value of the effectiveness (the level of training, leadership, morale, personnel and equipment operational status). The default value is 100%.|
 |WeaponsControlOrder|WeaponControlOrderEnum8|Optional. Describes current Weapon Control Order as Free, Tight, or Hold. The default is 0 - Other.|
 
 ## Datatypes
@@ -55,13 +51,16 @@ Note that only datatypes defined in this FOM Module are listed below. Please ref
 ### Overview
 |Name|Semantics|
 |---|---|
-|ArrayOfSensorStruct|Array with definitions of sensors, 1+ cardinality|
-|CaptureStatusEnum8|The status of a simulated entity concerning their control or influence over their activities.|
+|ArrayOfSensors|Array with definitions of sensors.|
+|ArrayOfSignatures|A set of signatures to characterize this entity's susceptibility to detection.|
 |ElectronicSignatureStruct|An entity's susceptibility to detection of its electronic emissions.|
 |HUMINTSignatureStruct|Describes the entity's susceptibility to human intelligence (HUMINT), i.e. information collected and provided by human sources.|
 |RangeFloat32|Range of sensor|
 |SensorStateEnum32|The emission states of aggregate sensors|
 |SensorStateStruct|Defines a sensor's operational status, damage status, and coverage.|
+|SignatureTypeEnum8||
+|SignatureVariant||
+|SymbolStruct|Symbol Id and additional symbol amplification data.|
 |VisualSignatureStruct|Specifies the visual structure|
 |WeaponControlOrderEnum8|The enumerations for weapon control|
         
@@ -73,20 +72,27 @@ Note that only datatypes defined in this FOM Module are listed below. Please ref
 ### Enumerated Datatypes
 |Name|Representation|Semantics|
 |---|---|---|
-|CaptureStatusEnum8|HLAoctet|The status of a simulated entity concerning their control or influence over their activities.|
 |SensorStateEnum32|HLAinteger32BE|The emission states of aggregate sensors|
+|SignatureTypeEnum8|HLAinteger32BE||
 |WeaponControlOrderEnum8|HLAoctet|The enumerations for weapon control|
         
 ### Array Datatypes
 |Name|Element Datatype|Semantics|
 |---|---|---|
-|ArrayOfSensorStruct|SensorStateStruct|Array with definitions of sensors, 1+ cardinality|
+|ArrayOfSensors|SensorStateStruct|Array with definitions of sensors.|
+|ArrayOfSignatures|SignatureVariant|A set of signatures to characterize this entity's susceptibility to detection.|
         
 ### Fixed Record Datatypes
 |Name|Fields|Semantics|
 |---|---|---|
 |ElectronicSignatureStruct|ElectronicSignaturePercent, SensorArray|An entity's susceptibility to detection of its electronic emissions.|
 |HUMINTSignatureStruct|HUMINTSignaturePercent|Describes the entity's susceptibility to human intelligence (HUMINT), i.e. information collected and provided by human sources.|
-|SensorStateStruct|SensorStateEnum, SensorDamageState, SensorCoverage, SensorId|Defines a sensor's operational status, damage status, and coverage.|
+|SensorStateStruct|SensorId, SensorType, SensorStateEnum, SensorDamageState, SensorCoverage|Defines a sensor's operational status, damage status, and coverage.|
+|SymbolStruct|Id, Amplification|Symbol Id and additional symbol amplification data.|
 |VisualSignatureStruct|DVOSignaturePercent, I2SignaturePercent, ThermalSignaturePercent|Specifies the visual structure|
+        
+### Variant Record Datatypes
+|Name|Discriminant (Datatype)|Alternatives|Semantics|
+|---|---|---|---|
+|SignatureVariant|Signature (SignatureTypeEnum8)|DVO, I2, Thermal, HUMINT, Electronic||
     
