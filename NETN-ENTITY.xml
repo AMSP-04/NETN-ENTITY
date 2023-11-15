@@ -100,7 +100,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <updateType>Conditional</updateType>
                     <updateCondition>On change</updateCondition>
                     <ownership>DivestAcquire</ownership>
-                    <sharing>Publish</sharing>
+                    <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
                     <semantics>Optional. The protection describes the entity's cover status from the effects of weapons fire. The default is 0% - fully affected by weapon fire.</semantics>
