@@ -214,11 +214,11 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
             <interactionClass>
                 <name>SMC_FederationControl</name>
                 <interactionClass>
-                    <name>ResendSensorUpdate</name>
+                    <name>ResendSensorUpdates</name>
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Request all sensor services to resend their latest sensor update.</semantics>
+                    <semantics>Request all sensor services to resend their latest sensor updates.</semantics>
                 </interactionClass>
             </interactionClass>
         </interactionClass>

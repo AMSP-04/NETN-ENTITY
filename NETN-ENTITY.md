@@ -54,7 +54,7 @@ graph RL
 SensorEvent-->HLAinteractionRoot
 SMC_FederationControl-->HLAinteractionRoot
 EntitySensorUpdate-->SensorEvent
-ResendSensorUpdate-->SMC_FederationControl
+ResendSensorUpdates-->SMC_FederationControl
 ```
 
 ### SensorEvent
@@ -79,9 +79,9 @@ Report on a unit's awareness of spotted entities.
 
 
 
-### ResendSensorUpdate
+### ResendSensorUpdates
 
-Request all sensor services to resend their latest sensor update.
+Request all sensor services to resend their latest sensor updates.
 
 
 ## Datatypes
