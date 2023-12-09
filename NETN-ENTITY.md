@@ -134,8 +134,8 @@ A group of one or more separate objects that operate together as part of an orga
 |Dimensions<br/>(RPR-Aggregate)|DimensionStruct|The size of the area covered by the units in the aggregate.| 
 |EntityIdentifier<br/>(RPR-Base)|EntityIdentifierStruct|The unique identifier for the entity instance.| 
 |EntityType<br/>(RPR-Base)|EntityTypeStruct|The category of the entity.| 
-|ForceIdentifier<br/>(RPR-Aggregate)|ForceIdentifierEnum8|The identification of the force that the aggregate belongs to.| 
-|Formation<br/>(RPR-Aggregate)|FormationEnum32|The category of positional arrangement of the entities within the aggregate.| 
+|ForceIdentifier<br/>(RPR-Aggregate)|ForceIdentifierEnum8|Optional. The identification of the force that the aggregate belongs to. Default = Other.| 
+|Formation<br/>(RPR-Aggregate)|FormationEnum32|Optional. The category of positional arrangement of the entities within the aggregate. Default = Other.| 
 |Spatial<br/>(RPR-Base)|SpatialVariantStruct|Spatial state stored in one variant record attribute.| 
 |UniqueId<br/>(NETN-BASE)|UUID|Required. A unique identifier for the object. The Universally Unique Identifier (UUID) is generated or pre-defined.| 
 
@@ -163,28 +163,28 @@ A platform entity that operates mainly in the air, such as aircraft, balloons, e
 |TaxiwayLightsOn|RPRboolean|Optional: Whether the entity's taxiway lights are on or not. Default False=0.|
 |TrueAirspeed|VelocityMeterPerSecondFloat32|Optional: The true air speed of the aircraft. Default = 0.|
 |WeightOnWheels|RPRboolean|Optional: Describes whether the air platform has weight on its main landing gear. Default True = 1.|
-|AfterburnerOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's afterburner is on or not.| 
-|AntiCollisionLightsOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's anti-collision lights are on or not.| 
-|ArticulatedParametersArray<br/>(RPR-Physical)|ArticulatedParameterStructLengthlessArray|Identification of the visible parts, and their states, of the entity which are capable of independent motion.| 
-|CamouflageType<br/>(RPR-Physical)|CamouflageEnum32|The type of camouflage in use (if any).| 
+|AfterburnerOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's afterburner is on or not. Default = False.| 
+|AntiCollisionLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's anti-collision lights are on or not. Default = False.| 
+|ArticulatedParametersArray<br/>(RPR-Physical)|ArticulatedParameterStructLengthlessArray|Optional. Identification of the visible parts, and their states, of the entity which are capable of independent motion. Default = Other.| 
+|CamouflageType<br/>(RPR-Physical)|CamouflageEnum32|Optional. The type of camouflage in use (if any). Default = Other.| 
 |CreationTime<br/>(NETN-BASE)|EpochTime|Optional: The time in the scenario when the object is created. Creation time is milliseconds since Epoch, where Epoch is January 1, 1970, 00:00:00 UTC or otherwise defined in federation agreements.| 
-|DamageState<br/>(RPR-Physical)|DamageStatusEnum32|The state of damage of the entity.| 
-|EngineSmokeOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's engine is generating smoke or not.| 
+|DamageState<br/>(RPR-Physical)|DamageStatusEnum32|Optional. The state of damage of the entity. Default = Other.| 
+|EngineSmokeOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's engine is generating smoke or not. Default = Other.| 
 |EntityIdentifier<br/>(RPR-Base)|EntityIdentifierStruct|The unique identifier for the entity instance.| 
 |EntityType<br/>(RPR-Base)|EntityTypeStruct|The category of the entity.| 
-|FlamesPresent<br/>(RPR-Physical)|RPRboolean|Whether the entity is on fire (with visible flames) or not.| 
-|ForceIdentifier<br/>(RPR-Physical)|ForceIdentifierEnum8|The identification of the force that the entity belongs to.| 
-|FormationLightsOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's formation lights are on or not.| 
-|Immobilized<br/>(RPR-Physical)|RPRboolean|Whether the entity is immobilized or not.| 
-|InteriorLightsOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's internal lights are on or not.| 
-|LandingLightsOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's landing lights are on or not.| 
-|Marking<br/>(RPR-Physical)|MarkingStruct|A unique marking or combination of characters used to distinguish the entity from other entities.| 
-|NavigationLightsOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's navigation lights are on or not.| 
-|PowerPlantOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's power plant is on or not.| 
-|SmokePlumePresent<br/>(RPR-Physical)|RPRboolean|Whether the entity is generating smoke or not (intentional or unintentional).| 
+|FlamesPresent<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity is on fire (with visible flames) or not. Default = Other.| 
+|ForceIdentifier<br/>(RPR-Physical)|ForceIdentifierEnum8|Optional. The identification of the force that the entity belongs to. Default = Other.| 
+|FormationLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's formation lights are on or not. Default = False.| 
+|Immobilized<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity is immobilized or not. Default = Other.| 
+|InteriorLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's internal lights are on or not. Default = False.| 
+|LandingLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's landing lights are on or not. Default = False.| 
+|Marking<br/>(RPR-Physical)|MarkingStruct|Optional. A unique marking or combination of characters used to distinguish the entity from other entities. Default = Other.| 
+|NavigationLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's navigation lights are on or not. Default = False.| 
+|PowerPlantOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's power plant is on or not. Default = Other.| 
+|SmokePlumePresent<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity is generating smoke or not (intentional or unintentional). Default = Other.| 
 |Spatial<br/>(RPR-Base)|SpatialVariantStruct|Spatial state stored in one variant record attribute.| 
-|SpotLightsOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's spotlights are on or not.| 
-|TrailingEffectsCode<br/>(RPR-Physical)|TrailingEffectsCodeEnum32|The type and size of any trail that the entity is making.| 
+|SpotLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's spotlights are on or not. Default = False.| 
+|TrailingEffectsCode<br/>(RPR-Physical)|TrailingEffectsCodeEnum32|Optional. The type and size of any trail that the entity is making. Default = Other.| 
 |UniqueId<br/>(NETN-BASE)|UUID|Required. A unique identifier for the object. The Universally Unique Identifier (UUID) is generated or pre-defined.| 
 
 ### TankerAircraft
@@ -223,28 +223,28 @@ A tanker aircraft.
 |TaxiwayLightsOn|RPRboolean|Optional: Whether the entity's taxiway lights are on or not. Default False=0.|
 |TrueAirspeed|VelocityMeterPerSecondFloat32|Optional: The true air speed of the aircraft. Default = 0.|
 |WeightOnWheels|RPRboolean|Optional: Describes whether the air platform has weight on its main landing gear. Default True = 1.|
-|AfterburnerOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's afterburner is on or not.| 
-|AntiCollisionLightsOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's anti-collision lights are on or not.| 
-|ArticulatedParametersArray<br/>(RPR-Physical)|ArticulatedParameterStructLengthlessArray|Identification of the visible parts, and their states, of the entity which are capable of independent motion.| 
-|CamouflageType<br/>(RPR-Physical)|CamouflageEnum32|The type of camouflage in use (if any).| 
+|AfterburnerOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's afterburner is on or not. Default = False.| 
+|AntiCollisionLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's anti-collision lights are on or not. Default = False.| 
+|ArticulatedParametersArray<br/>(RPR-Physical)|ArticulatedParameterStructLengthlessArray|Optional. Identification of the visible parts, and their states, of the entity which are capable of independent motion. Default = Other.| 
+|CamouflageType<br/>(RPR-Physical)|CamouflageEnum32|Optional. The type of camouflage in use (if any). Default = Other.| 
 |CreationTime<br/>(NETN-BASE)|EpochTime|Optional: The time in the scenario when the object is created. Creation time is milliseconds since Epoch, where Epoch is January 1, 1970, 00:00:00 UTC or otherwise defined in federation agreements.| 
-|DamageState<br/>(RPR-Physical)|DamageStatusEnum32|The state of damage of the entity.| 
-|EngineSmokeOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's engine is generating smoke or not.| 
+|DamageState<br/>(RPR-Physical)|DamageStatusEnum32|Optional. The state of damage of the entity. Default = Other.| 
+|EngineSmokeOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's engine is generating smoke or not. Default = Other.| 
 |EntityIdentifier<br/>(RPR-Base)|EntityIdentifierStruct|The unique identifier for the entity instance.| 
 |EntityType<br/>(RPR-Base)|EntityTypeStruct|The category of the entity.| 
-|FlamesPresent<br/>(RPR-Physical)|RPRboolean|Whether the entity is on fire (with visible flames) or not.| 
-|ForceIdentifier<br/>(RPR-Physical)|ForceIdentifierEnum8|The identification of the force that the entity belongs to.| 
-|FormationLightsOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's formation lights are on or not.| 
-|Immobilized<br/>(RPR-Physical)|RPRboolean|Whether the entity is immobilized or not.| 
-|InteriorLightsOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's internal lights are on or not.| 
-|LandingLightsOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's landing lights are on or not.| 
-|Marking<br/>(RPR-Physical)|MarkingStruct|A unique marking or combination of characters used to distinguish the entity from other entities.| 
-|NavigationLightsOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's navigation lights are on or not.| 
-|PowerPlantOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's power plant is on or not.| 
-|SmokePlumePresent<br/>(RPR-Physical)|RPRboolean|Whether the entity is generating smoke or not (intentional or unintentional).| 
+|FlamesPresent<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity is on fire (with visible flames) or not. Default = Other.| 
+|ForceIdentifier<br/>(RPR-Physical)|ForceIdentifierEnum8|Optional. The identification of the force that the entity belongs to. Default = Other.| 
+|FormationLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's formation lights are on or not. Default = False.| 
+|Immobilized<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity is immobilized or not. Default = Other.| 
+|InteriorLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's internal lights are on or not. Default = False.| 
+|LandingLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's landing lights are on or not. Default = False.| 
+|Marking<br/>(RPR-Physical)|MarkingStruct|Optional. A unique marking or combination of characters used to distinguish the entity from other entities. Default = Other.| 
+|NavigationLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's navigation lights are on or not. Default = False.| 
+|PowerPlantOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's power plant is on or not. Default = Other.| 
+|SmokePlumePresent<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity is generating smoke or not (intentional or unintentional). Default = Other.| 
 |Spatial<br/>(RPR-Base)|SpatialVariantStruct|Spatial state stored in one variant record attribute.| 
-|SpotLightsOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's spotlights are on or not.| 
-|TrailingEffectsCode<br/>(RPR-Physical)|TrailingEffectsCodeEnum32|The type and size of any trail that the entity is making.| 
+|SpotLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's spotlights are on or not. Default = False.| 
+|TrailingEffectsCode<br/>(RPR-Physical)|TrailingEffectsCodeEnum32|Optional. The type and size of any trail that the entity is making. Default = Other.| 
 |UniqueId<br/>(NETN-BASE)|UUID|Required. A unique identifier for the object. The Universally Unique Identifier (UUID) is generated or pre-defined.| 
 
 ### GroundVehicle
@@ -263,31 +263,31 @@ A platform entity that operates wholly on the surface of the earth.
 |Sensors|ArrayOfSensor|Optional: A set of sensors associated with the entity. Default is No sensors = Empty.|
 |Signatures|ArrayOfSignature|Optional: A set of signatures to characterize this entity's susceptibility to detection. Default is No Signatures = Empty.|
 |Symbol|SymbolStruct|Optional. A symbol identifier and additional amplification. Derive default value based on `EntityType`.|
-|ArticulatedParametersArray<br/>(RPR-Physical)|ArticulatedParameterStructLengthlessArray|Identification of the visible parts, and their states, of the entity which are capable of independent motion.| 
-|BlackOutBrakeLightsOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's black out brake lights are on or not.| 
-|BlackOutLightsOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's black out lights are on or not.| 
-|BrakeLightsOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's brake lights are on or not.| 
-|CamouflageType<br/>(RPR-Physical)|CamouflageEnum32|The type of camouflage in use (if any).| 
+|ArticulatedParametersArray<br/>(RPR-Physical)|ArticulatedParameterStructLengthlessArray|Optional. Identification of the visible parts, and their states, of the entity which are capable of independent motion. Default = Other.| 
+|BlackOutBrakeLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's black out brake lights are on or not. Default = False.| 
+|BlackOutLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's black out lights are on or not. Default = False.| 
+|BrakeLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's brake lights are on or not. Default = False.| 
+|CamouflageType<br/>(RPR-Physical)|CamouflageEnum32|Optional. The type of camouflage in use (if any). Default = Other.| 
 |CreationTime<br/>(NETN-BASE)|EpochTime|Optional: The time in the scenario when the object is created. Creation time is milliseconds since Epoch, where Epoch is January 1, 1970, 00:00:00 UTC or otherwise defined in federation agreements.| 
-|DamageState<br/>(RPR-Physical)|DamageStatusEnum32|The state of damage of the entity.| 
-|EngineSmokeOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's engine is generating smoke or not.| 
+|DamageState<br/>(RPR-Physical)|DamageStatusEnum32|Optional. The state of damage of the entity. Default = Other.| 
+|EngineSmokeOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's engine is generating smoke or not. Default = Other.| 
 |EntityIdentifier<br/>(RPR-Base)|EntityIdentifierStruct|The unique identifier for the entity instance.| 
 |EntityType<br/>(RPR-Base)|EntityTypeStruct|The category of the entity.| 
-|FlamesPresent<br/>(RPR-Physical)|RPRboolean|Whether the entity is on fire (with visible flames) or not.| 
-|ForceIdentifier<br/>(RPR-Physical)|ForceIdentifierEnum8|The identification of the force that the entity belongs to.| 
-|HatchState<br/>(RPR-Physical)|HatchStateEnum32|The state of the entity's (main) hatch.| 
-|HeadLightsOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's headlights are on or not.| 
-|Immobilized<br/>(RPR-Physical)|RPRboolean|Whether the entity is immobilized or not.| 
-|InteriorLightsOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's internal lights are on or not.| 
-|LauncherRaised<br/>(RPR-Physical)|RPRboolean|Whether the entity's weapon launcher is in the raised position.| 
-|Marking<br/>(RPR-Physical)|MarkingStruct|A unique marking or combination of characters used to distinguish the entity from other entities.| 
-|PowerPlantOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's power plant is on or not.| 
-|RampDeployed<br/>(RPR-Physical)|RPRboolean|Whether the entity has deployed a ramp or not.| 
-|SmokePlumePresent<br/>(RPR-Physical)|RPRboolean|Whether the entity is generating smoke or not (intentional or unintentional).| 
+|FlamesPresent<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity is on fire (with visible flames) or not. Default = Other.| 
+|ForceIdentifier<br/>(RPR-Physical)|ForceIdentifierEnum8|Optional. The identification of the force that the entity belongs to. Default = Other.| 
+|HatchState<br/>(RPR-Physical)|HatchStateEnum32|Optional. The state of the entity's (main) hatch. Default = NotApplicable.| 
+|HeadLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's headlights are on or not. Default = False.| 
+|Immobilized<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity is immobilized or not. Default = Other.| 
+|InteriorLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's internal lights are on or not. Default = False.| 
+|LauncherRaised<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's weapon launcher is in the raised position. Default = False.| 
+|Marking<br/>(RPR-Physical)|MarkingStruct|Optional. A unique marking or combination of characters used to distinguish the entity from other entities. Default = Other.| 
+|PowerPlantOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's power plant is on or not. Default = Other.| 
+|RampDeployed<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity has deployed a ramp or not. Default = False.| 
+|SmokePlumePresent<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity is generating smoke or not (intentional or unintentional). Default = Other.| 
 |Spatial<br/>(RPR-Base)|SpatialVariantStruct|Spatial state stored in one variant record attribute.| 
-|SpotLightsOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's spotlights are on or not.| 
-|TailLightsOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's tail lights are on or not.| 
-|TrailingEffectsCode<br/>(RPR-Physical)|TrailingEffectsCodeEnum32|The type and size of any trail that the entity is making.| 
+|SpotLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's spotlights are on or not. Default = False.| 
+|TailLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's tail lights are on or not. Default = False.| 
+|TrailingEffectsCode<br/>(RPR-Physical)|TrailingEffectsCodeEnum32|Optional. The type and size of any trail that the entity is making. Default = Other.| 
 |UniqueId<br/>(NETN-BASE)|UUID|Required. A unique identifier for the object. The Universally Unique Identifier (UUID) is generated or pre-defined.| 
 
 ### SurfaceVessel
@@ -317,24 +317,24 @@ A platform entity that operates wholly on the surface of the sea.
 |UpperDeckLightsOn|RPRboolean|Optional: Whether the entitys upper deck lights are on or not. Default Off = False.|
 |WarningLightsOn|RPRboolean|Optional: Whether the entitys warning/safety lights are on or not. Default Off = False.|
 |WaveOffLightOn|RPRboolean|Optional: Whether the entitys wave off light is on or not. Default Off = False.|
-|ArticulatedParametersArray<br/>(RPR-Physical)|ArticulatedParameterStructLengthlessArray|Identification of the visible parts, and their states, of the entity which are capable of independent motion.| 
-|CamouflageType<br/>(RPR-Physical)|CamouflageEnum32|The type of camouflage in use (if any).| 
+|ArticulatedParametersArray<br/>(RPR-Physical)|ArticulatedParameterStructLengthlessArray|Optional. Identification of the visible parts, and their states, of the entity which are capable of independent motion. Default = Other.| 
+|CamouflageType<br/>(RPR-Physical)|CamouflageEnum32|Optional. The type of camouflage in use (if any). Default = Other.| 
 |CreationTime<br/>(NETN-BASE)|EpochTime|Optional: The time in the scenario when the object is created. Creation time is milliseconds since Epoch, where Epoch is January 1, 1970, 00:00:00 UTC or otherwise defined in federation agreements.| 
-|DamageState<br/>(RPR-Physical)|DamageStatusEnum32|The state of damage of the entity.| 
-|EngineSmokeOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's engine is generating smoke or not.| 
+|DamageState<br/>(RPR-Physical)|DamageStatusEnum32|Optional. The state of damage of the entity. Default = Other.| 
+|EngineSmokeOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's engine is generating smoke or not. Default = Other.| 
 |EntityIdentifier<br/>(RPR-Base)|EntityIdentifierStruct|The unique identifier for the entity instance.| 
 |EntityType<br/>(RPR-Base)|EntityTypeStruct|The category of the entity.| 
-|FlamesPresent<br/>(RPR-Physical)|RPRboolean|Whether the entity is on fire (with visible flames) or not.| 
-|ForceIdentifier<br/>(RPR-Physical)|ForceIdentifierEnum8|The identification of the force that the entity belongs to.| 
-|Immobilized<br/>(RPR-Physical)|RPRboolean|Whether the entity is immobilized or not.| 
-|InteriorLightsOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's internal lights are on or not.| 
-|Marking<br/>(RPR-Physical)|MarkingStruct|A unique marking or combination of characters used to distinguish the entity from other entities.| 
-|PowerPlantOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's power plant is on or not.| 
-|RunningLightsOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's running lights are on or not.| 
-|SmokePlumePresent<br/>(RPR-Physical)|RPRboolean|Whether the entity is generating smoke or not (intentional or unintentional).| 
+|FlamesPresent<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity is on fire (with visible flames) or not. Default = Other.| 
+|ForceIdentifier<br/>(RPR-Physical)|ForceIdentifierEnum8|Optional. The identification of the force that the entity belongs to. Default = Other.| 
+|Immobilized<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity is immobilized or not. Default = Other.| 
+|InteriorLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's internal lights are on or not. Default = False.| 
+|Marking<br/>(RPR-Physical)|MarkingStruct|Optional. A unique marking or combination of characters used to distinguish the entity from other entities. Default = Other.| 
+|PowerPlantOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's power plant is on or not. Default = Other.| 
+|RunningLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's running lights are on or not. Default = False.| 
+|SmokePlumePresent<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity is generating smoke or not (intentional or unintentional). Default = Other.| 
 |Spatial<br/>(RPR-Base)|SpatialVariantStruct|Spatial state stored in one variant record attribute.| 
-|SpotLightsOn<br/>(RPR-Physical)|RPRboolean|Whether the entity's spotlights are on or not.| 
-|TrailingEffectsCode<br/>(RPR-Physical)|TrailingEffectsCodeEnum32|The type and size of any trail that the entity is making.| 
+|SpotLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's spotlights are on or not. Default = False.| 
+|TrailingEffectsCode<br/>(RPR-Physical)|TrailingEffectsCodeEnum32|Optional. The type and size of any trail that the entity is making. Default = Other.| 
 |UniqueId<br/>(NETN-BASE)|UUID|Required. A unique identifier for the object. The Universally Unique Identifier (UUID) is generated or pre-defined.| 
 
 ## Datatypes
