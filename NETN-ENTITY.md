@@ -113,6 +113,25 @@ SurfaceVessel : WaveOffLightOn
 SurfaceVessel : RunningLightsOn(RPR-Physical)
 ```
 
+### BaseEntity
+
+A base class of aggregate and discrete scenario domain participants. The BaseEntity class is characterized by being located at a particular location in space and independently movable, if capable of movement at all. It specifically excludes elements normally considered to be a component of another element. The BaseEntity class is intended to be a container for common attributes for entities of this type. Since it lacks sufficient class specific attributes that are required for simulation purposes, federates cannot publish objects of this class. Certain simulation management federates, e.g. viewers, may subscribe to this class. Simulation federates will normally subscribe to one of the subclasses, to gain the extra information required to properly simulate the entity.
+
+|Attribute|Datatype|Semantics|
+|---|---|---|
+|Callsign|HLAunicodeString|Optional: The callsign is a unique-designator. Use the RPR-FOM `PhysicalEntity` attribute `Marking` or the `AggregateEntity` attribute `AggregateMarking` as default value. Max length 21 characters.|
+|CaptureStatus|CaptureStatusEnum8|Optional: The status of an entity's level of control or influence over its activities. The Default is 0 = Other.|
+|HostEntity|UUID|Optional. Reference to the simulation entity this platform is mounted on or embedded in. Default is all zeros.|
+|ProtectionLevel|PercentFloat32|Optional. An entity's additional level of protection against the effects of weapons fire. E.g., cover, fortification, etc. Default is 0 = fully affected by weapon fire.|
+|Sensors|ArrayOfSensor|Optional: A set of sensors associated with the entity. Default is No sensors = Empty.|
+|Signatures|ArrayOfSignature|Optional: A set of signatures to characterize this entity's susceptibility to detection. Default is No Signatures = Empty.|
+|Symbol|SymbolStruct|Optional. A symbol identifier and additional amplification. Derive default value based on `EntityType`.|
+|CreationTime<br/>(NETN-BASE)|EpochTime|Optional: The time in the scenario when the object is created.| 
+|EntityIdentifier<br/>(RPR-Base)|EntityIdentifierStruct|The unique identifier for the entity instance.| 
+|EntityType<br/>(RPR-Base)|EntityTypeStruct|The category of the entity.| 
+|Spatial<br/>(RPR-Base)|SpatialVariantStruct|Spatial state stored in one variant record attribute.| 
+|UniqueId<br/>(NETN-BASE)|UUID|Required. A unique identifier for the object. The Universally Unique Identifier (UUID) is generated or pre-defined.| 
+
 ### AggregateEntity
 
 A group of one or more separate objects that operate together as part of an organization. These objects may be discrete, may be other aggregate objects, or may be a mixture of both.
@@ -130,13 +149,75 @@ A group of one or more separate objects that operate together as part of an orga
 |Symbol|SymbolStruct|Optional. A symbol identifier and additional amplification. Derive default value based on `EntityType`.|
 |WeaponsControlOrder|WeaponControlOrderEnum8|Optional. Describes current Weapon Control Order as Free, Tight, or Hold. Default is 0 = Other.|
 |AggregateState<br/>(RPR-Aggregate)|AggregateStateEnum8|An indicator of the extent of association of objects form an operating group.| 
-|CreationTime<br/>(NETN-BASE)|EpochTime|Optional: The time in the scenario when the object is created. Creation time is milliseconds since Epoch, where Epoch is January 1, 1970, 00:00:00 UTC or otherwise defined in federation agreements.| 
+|CreationTime<br/>(NETN-BASE)|EpochTime|Optional: The time in the scenario when the object is created.| 
 |Dimensions<br/>(RPR-Aggregate)|DimensionStruct|The size of the area covered by the units in the aggregate.| 
 |EntityIdentifier<br/>(RPR-Base)|EntityIdentifierStruct|The unique identifier for the entity instance.| 
 |EntityType<br/>(RPR-Base)|EntityTypeStruct|The category of the entity.| 
 |ForceIdentifier<br/>(RPR-Aggregate)|ForceIdentifierEnum8|Optional. The identification of the force that the aggregate belongs to. Default = Other.| 
 |Formation<br/>(RPR-Aggregate)|FormationEnum32|Optional. The category of positional arrangement of the entities within the aggregate. Default = Other.| 
 |Spatial<br/>(RPR-Base)|SpatialVariantStruct|Spatial state stored in one variant record attribute.| 
+|UniqueId<br/>(NETN-BASE)|UUID|Required. A unique identifier for the object. The Universally Unique Identifier (UUID) is generated or pre-defined.| 
+
+### PhysicalEntity
+
+A base class of all discrete platform scenario domain participants.
+
+|Attribute|Datatype|Semantics|
+|---|---|---|
+|Callsign|HLAunicodeString|Optional: The callsign is a unique-designator. Use the RPR-FOM `PhysicalEntity` attribute `Marking` or the `AggregateEntity` attribute `AggregateMarking` as default value. Max length 21 characters.|
+|CaptureStatus|CaptureStatusEnum8|Optional: The status of an entity's level of control or influence over its activities. The Default is 0 = Other.|
+|HostEntity|UUID|Optional. Reference to the simulation entity this platform is mounted on or embedded in. Default is all zeros.|
+|ProtectionLevel|PercentFloat32|Optional. An entity's additional level of protection against the effects of weapons fire. E.g., cover, fortification, etc. Default is 0 = fully affected by weapon fire.|
+|Sensors|ArrayOfSensor|Optional: A set of sensors associated with the entity. Default is No sensors = Empty.|
+|Signatures|ArrayOfSignature|Optional: A set of signatures to characterize this entity's susceptibility to detection. Default is No Signatures = Empty.|
+|Symbol|SymbolStruct|Optional. A symbol identifier and additional amplification. Derive default value based on `EntityType`.|
+|ArticulatedParametersArray<br/>(RPR-Physical)|ArticulatedParameterStructLengthlessArray|Optional. Identification of the visible parts, and their states, of the entity which are capable of independent motion. Default = Other.| 
+|CamouflageType<br/>(RPR-Physical)|CamouflageEnum32|Optional. The type of camouflage in use (if any). Default = Other.| 
+|CreationTime<br/>(NETN-BASE)|EpochTime|Optional: The time in the scenario when the object is created.| 
+|DamageState<br/>(RPR-Physical)|DamageStatusEnum32|Optional. The state of damage of the entity. Default = Other.| 
+|EngineSmokeOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's engine is generating smoke or not. Default = Other.| 
+|EntityIdentifier<br/>(RPR-Base)|EntityIdentifierStruct|The unique identifier for the entity instance.| 
+|EntityType<br/>(RPR-Base)|EntityTypeStruct|The category of the entity.| 
+|FlamesPresent<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity is on fire (with visible flames) or not. Default = Other.| 
+|ForceIdentifier<br/>(RPR-Physical)|ForceIdentifierEnum8|Optional. The identification of the force that the entity belongs to. Default = Other.| 
+|Immobilized<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity is immobilized or not. Default = Other.| 
+|Marking<br/>(RPR-Physical)|MarkingStruct|Optional. A unique marking or combination of characters used to distinguish the entity from other entities. Default = Other.| 
+|PowerPlantOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's power plant is on or not. Default = Other.| 
+|SmokePlumePresent<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity is generating smoke or not (intentional or unintentional). Default = Other.| 
+|Spatial<br/>(RPR-Base)|SpatialVariantStruct|Spatial state stored in one variant record attribute.| 
+|TrailingEffectsCode<br/>(RPR-Physical)|TrailingEffectsCodeEnum32|Optional. The type and size of any trail that the entity is making. Default = Other.| 
+|UniqueId<br/>(NETN-BASE)|UUID|Required. A unique identifier for the object. The Universally Unique Identifier (UUID) is generated or pre-defined.| 
+
+### Platform
+
+A physical object under the control of armed forces upon which sensor, communication, or weapon systems may be mounted.
+
+|Attribute|Datatype|Semantics|
+|---|---|---|
+|Callsign|HLAunicodeString|Optional: The callsign is a unique-designator. Use the RPR-FOM `PhysicalEntity` attribute `Marking` or the `AggregateEntity` attribute `AggregateMarking` as default value. Max length 21 characters.|
+|CaptureStatus|CaptureStatusEnum8|Optional: The status of an entity's level of control or influence over its activities. The Default is 0 = Other.|
+|HostEntity|UUID|Optional. Reference to the simulation entity this platform is mounted on or embedded in. Default is all zeros.|
+|ProtectionLevel|PercentFloat32|Optional. An entity's additional level of protection against the effects of weapons fire. E.g., cover, fortification, etc. Default is 0 = fully affected by weapon fire.|
+|Sensors|ArrayOfSensor|Optional: A set of sensors associated with the entity. Default is No sensors = Empty.|
+|Signatures|ArrayOfSignature|Optional: A set of signatures to characterize this entity's susceptibility to detection. Default is No Signatures = Empty.|
+|Symbol|SymbolStruct|Optional. A symbol identifier and additional amplification. Derive default value based on `EntityType`.|
+|ArticulatedParametersArray<br/>(RPR-Physical)|ArticulatedParameterStructLengthlessArray|Optional. Identification of the visible parts, and their states, of the entity which are capable of independent motion. Default = Other.| 
+|CamouflageType<br/>(RPR-Physical)|CamouflageEnum32|Optional. The type of camouflage in use (if any). Default = Other.| 
+|CreationTime<br/>(NETN-BASE)|EpochTime|Optional: The time in the scenario when the object is created.| 
+|DamageState<br/>(RPR-Physical)|DamageStatusEnum32|Optional. The state of damage of the entity. Default = Other.| 
+|EngineSmokeOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's engine is generating smoke or not. Default = Other.| 
+|EntityIdentifier<br/>(RPR-Base)|EntityIdentifierStruct|The unique identifier for the entity instance.| 
+|EntityType<br/>(RPR-Base)|EntityTypeStruct|The category of the entity.| 
+|FlamesPresent<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity is on fire (with visible flames) or not. Default = Other.| 
+|ForceIdentifier<br/>(RPR-Physical)|ForceIdentifierEnum8|Optional. The identification of the force that the entity belongs to. Default = Other.| 
+|Immobilized<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity is immobilized or not. Default = Other.| 
+|InteriorLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's internal lights are on or not. Default = False.| 
+|Marking<br/>(RPR-Physical)|MarkingStruct|Optional. A unique marking or combination of characters used to distinguish the entity from other entities. Default = Other.| 
+|PowerPlantOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's power plant is on or not. Default = Other.| 
+|SmokePlumePresent<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity is generating smoke or not (intentional or unintentional). Default = Other.| 
+|Spatial<br/>(RPR-Base)|SpatialVariantStruct|Spatial state stored in one variant record attribute.| 
+|SpotLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's spotlights are on or not. Default = False.| 
+|TrailingEffectsCode<br/>(RPR-Physical)|TrailingEffectsCodeEnum32|Optional. The type and size of any trail that the entity is making. Default = Other.| 
 |UniqueId<br/>(NETN-BASE)|UUID|Required. A unique identifier for the object. The Universally Unique Identifier (UUID) is generated or pre-defined.| 
 
 ### Aircraft
@@ -167,7 +248,7 @@ A platform entity that operates mainly in the air, such as aircraft, balloons, e
 |AntiCollisionLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's anti-collision lights are on or not. Default = False.| 
 |ArticulatedParametersArray<br/>(RPR-Physical)|ArticulatedParameterStructLengthlessArray|Optional. Identification of the visible parts, and their states, of the entity which are capable of independent motion. Default = Other.| 
 |CamouflageType<br/>(RPR-Physical)|CamouflageEnum32|Optional. The type of camouflage in use (if any). Default = Other.| 
-|CreationTime<br/>(NETN-BASE)|EpochTime|Optional: The time in the scenario when the object is created. Creation time is milliseconds since Epoch, where Epoch is January 1, 1970, 00:00:00 UTC or otherwise defined in federation agreements.| 
+|CreationTime<br/>(NETN-BASE)|EpochTime|Optional: The time in the scenario when the object is created.| 
 |DamageState<br/>(RPR-Physical)|DamageStatusEnum32|Optional. The state of damage of the entity. Default = Other.| 
 |EngineSmokeOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's engine is generating smoke or not. Default = Other.| 
 |EntityIdentifier<br/>(RPR-Base)|EntityIdentifierStruct|The unique identifier for the entity instance.| 
@@ -227,7 +308,7 @@ A tanker aircraft.
 |AntiCollisionLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's anti-collision lights are on or not. Default = False.| 
 |ArticulatedParametersArray<br/>(RPR-Physical)|ArticulatedParameterStructLengthlessArray|Optional. Identification of the visible parts, and their states, of the entity which are capable of independent motion. Default = Other.| 
 |CamouflageType<br/>(RPR-Physical)|CamouflageEnum32|Optional. The type of camouflage in use (if any). Default = Other.| 
-|CreationTime<br/>(NETN-BASE)|EpochTime|Optional: The time in the scenario when the object is created. Creation time is milliseconds since Epoch, where Epoch is January 1, 1970, 00:00:00 UTC or otherwise defined in federation agreements.| 
+|CreationTime<br/>(NETN-BASE)|EpochTime|Optional: The time in the scenario when the object is created.| 
 |DamageState<br/>(RPR-Physical)|DamageStatusEnum32|Optional. The state of damage of the entity. Default = Other.| 
 |EngineSmokeOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's engine is generating smoke or not. Default = Other.| 
 |EntityIdentifier<br/>(RPR-Base)|EntityIdentifierStruct|The unique identifier for the entity instance.| 
@@ -268,7 +349,7 @@ A platform entity that operates wholly on the surface of the earth.
 |BlackOutLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's black out lights are on or not. Default = False.| 
 |BrakeLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's brake lights are on or not. Default = False.| 
 |CamouflageType<br/>(RPR-Physical)|CamouflageEnum32|Optional. The type of camouflage in use (if any). Default = Other.| 
-|CreationTime<br/>(NETN-BASE)|EpochTime|Optional: The time in the scenario when the object is created. Creation time is milliseconds since Epoch, where Epoch is January 1, 1970, 00:00:00 UTC or otherwise defined in federation agreements.| 
+|CreationTime<br/>(NETN-BASE)|EpochTime|Optional: The time in the scenario when the object is created.| 
 |DamageState<br/>(RPR-Physical)|DamageStatusEnum32|Optional. The state of damage of the entity. Default = Other.| 
 |EngineSmokeOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's engine is generating smoke or not. Default = Other.| 
 |EntityIdentifier<br/>(RPR-Base)|EntityIdentifierStruct|The unique identifier for the entity instance.| 
@@ -319,7 +400,7 @@ A platform entity that operates wholly on the surface of the sea.
 |WaveOffLightOn|RPRboolean|Optional: Whether the entitys wave off light is on or not. Default Off = False.|
 |ArticulatedParametersArray<br/>(RPR-Physical)|ArticulatedParameterStructLengthlessArray|Optional. Identification of the visible parts, and their states, of the entity which are capable of independent motion. Default = Other.| 
 |CamouflageType<br/>(RPR-Physical)|CamouflageEnum32|Optional. The type of camouflage in use (if any). Default = Other.| 
-|CreationTime<br/>(NETN-BASE)|EpochTime|Optional: The time in the scenario when the object is created. Creation time is milliseconds since Epoch, where Epoch is January 1, 1970, 00:00:00 UTC or otherwise defined in federation agreements.| 
+|CreationTime<br/>(NETN-BASE)|EpochTime|Optional: The time in the scenario when the object is created.| 
 |DamageState<br/>(RPR-Physical)|DamageStatusEnum32|Optional. The state of damage of the entity. Default = Other.| 
 |EngineSmokeOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's engine is generating smoke or not. Default = Other.| 
 |EntityIdentifier<br/>(RPR-Base)|EntityIdentifierStruct|The unique identifier for the entity instance.| 
