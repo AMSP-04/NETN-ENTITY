@@ -233,8 +233,8 @@ A platform entity that operates mainly in the air, such as aircraft, balloons, e
 |FormationLightsLuminance|UnsignedInteger8|Optional: Formation lights luminance level. Default = 0.|
 |HDULightsOn|RPRboolean|Optional. Whether the HDU Lights are on or not. Hose Drogue Unit (HDU) Lights are used during air-to-air refueling. Default False = 0.|
 |HostEntity|UUID|Optional. Reference to the simulation entity this platform is mounted on or embedded in. Default is all zeros.|
-|IndicatedAirspeed|VelocityMeterPerSecondFloat32|Optional: The indicated air speed of the aircraft. Default = 0.|
-|MachNumber|MachNumber|Optional: The speed of the aircraft measured in Mach number. Default = 0.|
+|IndicatedAirspeed|VelocityMeterPerSecondFloat32|Optional: The indicated air speed of the aircraft. Default 2.6 m/s|
+|MachNumber|MachNumber|Optional: The speed of the aircraft measured in Mach number. Default = 0.1|
 |NVGMode|AppearanceNVGModeEnum8|Optional: Describes whether air platform lighting is in covert or overt mode. Default Overt_Lighting = 0.|
 |NavigationLightsFlashing|NavigationLightFlashingEnum8|Optional: Navigation lights flashing state. Default Steady=0.|
 |ProtectionLevel|PercentFloat32|Optional. An entity's additional level of protection against the effects of weapons fire. E.g., cover, fortification, etc. Default is 0 = fully affected by weapon fire.|
@@ -242,7 +242,7 @@ A platform entity that operates mainly in the air, such as aircraft, balloons, e
 |Signatures|ArrayOfSignature|Optional: A set of signatures to characterize this entity's susceptibility to detection. Default is No Signatures = Empty.|
 |Symbol|SymbolStruct|Optional. A symbol identifier and additional amplification. Derive default value based on `EntityType`.|
 |TaxiwayLightsOn|RPRboolean|Optional: Whether the entity's taxiway lights are on or not. Default False=0.|
-|TrueAirspeed|VelocityMeterPerSecondFloat32|Optional: The true air speed of the aircraft. Default = 0.|
+|TrueAirspeed|VelocityMeterPerSecondFloat32|Optional: The true air speed of the aircraft. Default = 2.6 m/s|
 |WeightOnWheels|RPRboolean|Optional: Describes whether the air platform has weight on its main landing gear. Default True = 1.|
 |AfterburnerOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's afterburner is on or not. Default = False.| 
 |AntiCollisionLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's anti-collision lights are on or not. Default = False.| 
@@ -281,8 +281,8 @@ A tanker aircraft.
 |FormationLightsLuminance|UnsignedInteger8|Optional: Formation lights luminance level. Default = 0.|
 |HDULightsOn|RPRboolean|Optional. Whether the HDU Lights are on or not. Hose Drogue Unit (HDU) Lights are used during air-to-air refueling. Default False = 0.|
 |HostEntity|UUID|Optional. Reference to the simulation entity this platform is mounted on or embedded in. Default is all zeros.|
-|IndicatedAirspeed|VelocityMeterPerSecondFloat32|Optional: The indicated air speed of the aircraft. Default = 0.|
-|MachNumber|MachNumber|Optional: The speed of the aircraft measured in Mach number. Default = 0.|
+|IndicatedAirspeed|VelocityMeterPerSecondFloat32|Optional: The indicated air speed of the aircraft. Default 2.6 m/s|
+|MachNumber|MachNumber|Optional: The speed of the aircraft measured in Mach number. Default = 0.1|
 |NVGMode|AppearanceNVGModeEnum8|Optional: Describes whether air platform lighting is in covert or overt mode. Default Overt_Lighting = 0.|
 |NavigationLightsFlashing|NavigationLightFlashingEnum8|Optional: Navigation lights flashing state. Default Steady=0.|
 |ProtectionLevel|PercentFloat32|Optional. An entity's additional level of protection against the effects of weapons fire. E.g., cover, fortification, etc. Default is 0 = fully affected by weapon fire.|
@@ -302,7 +302,7 @@ A tanker aircraft.
 |Signatures|ArrayOfSignature|Optional: A set of signatures to characterize this entity's susceptibility to detection. Default is No Signatures = Empty.|
 |Symbol|SymbolStruct|Optional. A symbol identifier and additional amplification. Derive default value based on `EntityType`.|
 |TaxiwayLightsOn|RPRboolean|Optional: Whether the entity's taxiway lights are on or not. Default False=0.|
-|TrueAirspeed|VelocityMeterPerSecondFloat32|Optional: The true air speed of the aircraft. Default = 0.|
+|TrueAirspeed|VelocityMeterPerSecondFloat32|Optional: The true air speed of the aircraft. Default = 2.6 m/s|
 |WeightOnWheels|RPRboolean|Optional: Describes whether the air platform has weight on its main landing gear. Default True = 1.|
 |AfterburnerOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's afterburner is on or not. Default = False.| 
 |AntiCollisionLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's anti-collision lights are on or not. Default = False.| 

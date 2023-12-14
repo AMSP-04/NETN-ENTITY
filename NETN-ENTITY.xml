@@ -11,8 +11,8 @@
         <description>The specification is based on IEEE 1516 High Level Architecture (HLA) Object Model Template (OMT) and supports interoperability in a federated simulation (federation) based on HLA.</description>
         <useLimitation>For backward compatibility, published objects should include all required RPR-FOM attributes.</useLimitation>
         <useHistory>v1.2 - First version developed by MSG-134 for NETN FOM v2.0. Object classes and datatypes derived from deprecated NETN FOM v 1.0 module AggDeagg.</useHistory>
-        <useHistory notes="netn-physical_1">v2.0 - Updated version developed by MSG-163 for NETN FOM v3.0 renamed NETN-Physical</useHistory>
-        <useHistory notes="netn-physical_2">v3.0 - Updated version developed by MSG-191 for NETN FOM v4.0 renamed NETN-ENTITY</useHistory>
+        <useHistory notes="netn-physical_changelog_1">v2.0 - Updated version developed by MSG-163 for NETN FOM v3.0 renamed NETN-Physical</useHistory>
+        <useHistory notes="netn-physical_changelog_2">v3.0 - Updated version developed by MSG-191 for NETN FOM v4.0 renamed NETN-ENTITY</useHistory>
         <poc>
             <pocType>Release authority</pocType>
             <pocName>NATO Modelling and Simulation Group</pocName>
@@ -285,36 +285,36 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                                 <name>IndicatedAirspeed</name>
                                 <dataType>VelocityMeterPerSecondFloat32</dataType>
                                 <updateType>Conditional</updateType>
-                                <updateCondition notes="COPY-MAKnotePhysical1">On change</updateCondition>
+                                <updateCondition>On change</updateCondition>
                                 <ownership>DivestAcquire</ownership>
                                 <sharing>PublishSubscribe</sharing>
                                 <transportation>HLAbestEffort</transportation>
                                 <order>Receive</order>
-                                <semantics>Optional: The indicated air speed of the aircraft. Default = 0.</semantics>
+                                <semantics>Optional: The indicated air speed of the aircraft. Default 2.6 m/s</semantics>
                             </attribute>
                             <attribute>
                                 <name>TrueAirspeed</name>
                                 <dataType>VelocityMeterPerSecondFloat32</dataType>
                                 <updateType>Conditional</updateType>
-                                <updateCondition notes="COPY-MAKnotePhysical1">On change</updateCondition>
+                                <updateCondition>On change</updateCondition>
                                 <ownership>DivestAcquire</ownership>
                                 <sharing>PublishSubscribe</sharing>
                                 <transportation>HLAbestEffort</transportation>
                                 <order>Receive</order>
-                                <semantics>Optional: The true air speed of the aircraft. Default = 0.</semantics>
+                                <semantics>Optional: The true air speed of the aircraft. Default = 2.6 m/s</semantics>
                             </attribute>
                             <attribute>
                                 <name>MachNumber</name>
                                 <dataType>MachNumber</dataType>
                                 <updateType>Conditional</updateType>
-                                <updateCondition notes="COPY-MAKnotePhysical2">On change</updateCondition>
+                                <updateCondition>On change</updateCondition>
                                 <ownership>DivestAcquire</ownership>
                                 <sharing>PublishSubscribe</sharing>
                                 <transportation>HLAbestEffort</transportation>
                                 <order>Receive</order>
-                                <semantics>Optional: The speed of the aircraft measured in Mach number. Default = 0.</semantics>
+                                <semantics>Optional: The speed of the aircraft measured in Mach number. Default = 0.1</semantics>
                             </attribute>
-                            <attribute notes="COPY-MAKnotePhysical3">
+                            <attribute>
                                 <name>WeightOnWheels</name>
                                 <dataType>RPRboolean</dataType>
                                 <updateType>Conditional</updateType>
@@ -986,7 +986,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
     </dataTypes>
     <notes>
         <note>
-            <label>netn-physical_1</label>
+            <label>netn-physical_changelog_1</label>
             <semantics>* Added attribute `SourceUnit` to all NETN-Physical platform and lifeform object classes. 
 * Added attribute `Route` to all NETN-Physical platform, munition and lifeform object classes. 
 * Added attribute `Destination` to all NETN-Physical platform, munition and lifeform object classes. 
@@ -1005,7 +1005,7 @@ NETN-MRM FOM Module v1.2.0 was developed by MSG-106 and MSG-134 and released as 
 * Changed from Reliable to BestEffort on some attributes to get a common transport type</semantics>
         </note>
         <note>
-            <label>netn-physical_2</label>
+            <label>netn-physical_changelog_2</label>
             <semantics>* Renamed module NETN-ENTITY 
  
 * Removed `NETN_Aircraft` object class 
@@ -1148,18 +1148,8 @@ NETN-MRM FOM Module v1.2.0 was developed by MSG-106 and MSG-134 and released as 
 * Changed datatype of FixedRecord SensorStruct field SensorID to UUID</semantics>
         </note>
         <note>
-            <label>COPY-MAKnotePhysical1</label>
-            <semantics>The update condition for this attribute is when the value differs from the last transmitted value by more than a threshold value in any direction. 
-The default threshold is 2.6 m/s.</semantics>
-        </note>
-        <note>
-            <label>COPY-MAKnotePhysical2</label>
-            <semantics>The update condition for this attribute is when the value differs from the last transmitted value by more than a threshold value in any direction. 
-The default threshold is 0.1.</semantics>
-        </note>
-        <note>
-            <label>COPY-MAKnotePhysical3</label>
-            <semantics>This attribute should be removed from MAK-Physical once this supports RPR 3.</semantics>
+            <label>netn-entity_overview</label>
+            <semantics></semantics>
         </note>
     </notes>
 </objectModel>
