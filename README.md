@@ -3,7 +3,7 @@
 
 |Version| Date| Dependencies|
 |---|---|---|
-|v3.0|2023-10-28|NETN-BASE|
+|v3.0|2023-12-09|NETN-BASE, RPR-Base, RPR-Physical, RPR-Aggregate, MIM|
 
 > [Full Documentation](NETN-ENTITY.md)
 
