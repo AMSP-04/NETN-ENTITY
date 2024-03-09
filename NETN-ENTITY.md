@@ -2,13 +2,23 @@
 # NETN-ENTITY
 |Version| Date| Dependencies|
 |---|---|---|
-|v3.0|2023-12-09|NETN-BASE, RPR-Base, RPR-Physical, RPR-Aggregate, MIM|
+|v3.0|2024-03-09|NETN-BASE, RPR-Base, RPR-Physical, RPR-Aggregate, MIM|
 
 The NETN-ENTITY FOM Module provides a standard interface for representing simulation entities in a federated distributed simulation. The module extends the RPR-FOM standard SISO-STD-001-2015 with additional attributes for simulated physical and aggregated entities.
 
-The specification is based on IEEE 1516 High Level Architecture (HLA) Object Model Template (OMT) and supports interoperability in a federated simulation (federation) based on HLA.
+
 
 For backward compatibility, published objects should include all required RPR-FOM attributes.
+
+## Overview
+
+The NETN-ENTITY module extends the RPR-FOM `BaseEntity` object class with optional attributes available for all physical and aggregate entity objects. In addition, the RPR-FOM `AggregateEntity` object class is extended with additional attributes.
+
+The module extends the RPR-FOM Platform, Aircraft, and SurfaceVessel with light-related attributes.
+
+A TankerAircraft object class extends the Aircraft object class as a new subclass.
+
+            
 
 
 ## Object Classes
@@ -126,7 +136,7 @@ A base class of aggregate and discrete scenario domain participants. The BaseEnt
 |Sensors|ArrayOfSensor|Optional: A set of sensors associated with the entity. Default is No sensors = Empty.|
 |Signatures|ArrayOfSignature|Optional: A set of signatures to characterize this entity's susceptibility to detection. Default is No Signatures = Empty.|
 |Symbol|SymbolStruct|Optional. A symbol identifier and additional amplification. Derive default value based on `EntityType`.|
-|CreationTime<br/>(NETN-BASE)|EpochTime|Optional: The time in the scenario when the object is created.| 
+|CreationTime<br/>(NETN-BASE)||| 
 |EntityIdentifier<br/>(RPR-Base)|EntityIdentifierStruct|The unique identifier for the entity instance.| 
 |EntityType<br/>(RPR-Base)|EntityTypeStruct|The category of the entity.| 
 |Spatial<br/>(RPR-Base)|SpatialVariantStruct|Spatial state stored in one variant record attribute.| 
@@ -149,7 +159,7 @@ A group of one or more separate objects that operate together as part of an orga
 |Symbol|SymbolStruct|Optional. A symbol identifier and additional amplification. Derive default value based on `EntityType`.|
 |WeaponsControlOrder|WeaponControlOrderEnum8|Optional. Describes current Weapon Control Order as Free, Tight, or Hold. Default is 0 = Other.|
 |AggregateState<br/>(RPR-Aggregate)|AggregateStateEnum8|An indicator of the extent of association of objects form an operating group.| 
-|CreationTime<br/>(NETN-BASE)|EpochTime|Optional: The time in the scenario when the object is created.| 
+|CreationTime<br/>(NETN-BASE)||| 
 |Dimensions<br/>(RPR-Aggregate)|DimensionStruct|The size of the area covered by the units in the aggregate.| 
 |EntityIdentifier<br/>(RPR-Base)|EntityIdentifierStruct|The unique identifier for the entity instance.| 
 |EntityType<br/>(RPR-Base)|EntityTypeStruct|The category of the entity.| 
@@ -173,7 +183,7 @@ A base class of all discrete platform scenario domain participants.
 |Symbol|SymbolStruct|Optional. A symbol identifier and additional amplification. Derive default value based on `EntityType`.|
 |ArticulatedParametersArray<br/>(RPR-Physical)|ArticulatedParameterStructLengthlessArray|Optional. Identification of the visible parts, and their states, of the entity which are capable of independent motion. Default = Other.| 
 |CamouflageType<br/>(RPR-Physical)|CamouflageEnum32|Optional. The type of camouflage in use (if any). Default = Other.| 
-|CreationTime<br/>(NETN-BASE)|EpochTime|Optional: The time in the scenario when the object is created.| 
+|CreationTime<br/>(NETN-BASE)||| 
 |DamageState<br/>(RPR-Physical)|DamageStatusEnum32|Optional. The state of damage of the entity. Default = Other.| 
 |EngineSmokeOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's engine is generating smoke or not. Default = Other.| 
 |EntityIdentifier<br/>(RPR-Base)|EntityIdentifierStruct|The unique identifier for the entity instance.| 
@@ -203,7 +213,7 @@ A physical object under the control of armed forces upon which sensor, communica
 |Symbol|SymbolStruct|Optional. A symbol identifier and additional amplification. Derive default value based on `EntityType`.|
 |ArticulatedParametersArray<br/>(RPR-Physical)|ArticulatedParameterStructLengthlessArray|Optional. Identification of the visible parts, and their states, of the entity which are capable of independent motion. Default = Other.| 
 |CamouflageType<br/>(RPR-Physical)|CamouflageEnum32|Optional. The type of camouflage in use (if any). Default = Other.| 
-|CreationTime<br/>(NETN-BASE)|EpochTime|Optional: The time in the scenario when the object is created.| 
+|CreationTime<br/>(NETN-BASE)||| 
 |DamageState<br/>(RPR-Physical)|DamageStatusEnum32|Optional. The state of damage of the entity. Default = Other.| 
 |EngineSmokeOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's engine is generating smoke or not. Default = Other.| 
 |EntityIdentifier<br/>(RPR-Base)|EntityIdentifierStruct|The unique identifier for the entity instance.| 
@@ -248,7 +258,7 @@ A platform entity that operates mainly in the air, such as aircraft, balloons, e
 |AntiCollisionLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's anti-collision lights are on or not. Default = False.| 
 |ArticulatedParametersArray<br/>(RPR-Physical)|ArticulatedParameterStructLengthlessArray|Optional. Identification of the visible parts, and their states, of the entity which are capable of independent motion. Default = Other.| 
 |CamouflageType<br/>(RPR-Physical)|CamouflageEnum32|Optional. The type of camouflage in use (if any). Default = Other.| 
-|CreationTime<br/>(NETN-BASE)|EpochTime|Optional: The time in the scenario when the object is created.| 
+|CreationTime<br/>(NETN-BASE)||| 
 |DamageState<br/>(RPR-Physical)|DamageStatusEnum32|Optional. The state of damage of the entity. Default = Other.| 
 |EngineSmokeOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's engine is generating smoke or not. Default = Other.| 
 |EntityIdentifier<br/>(RPR-Base)|EntityIdentifierStruct|The unique identifier for the entity instance.| 
@@ -308,7 +318,7 @@ A tanker aircraft.
 |AntiCollisionLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's anti-collision lights are on or not. Default = False.| 
 |ArticulatedParametersArray<br/>(RPR-Physical)|ArticulatedParameterStructLengthlessArray|Optional. Identification of the visible parts, and their states, of the entity which are capable of independent motion. Default = Other.| 
 |CamouflageType<br/>(RPR-Physical)|CamouflageEnum32|Optional. The type of camouflage in use (if any). Default = Other.| 
-|CreationTime<br/>(NETN-BASE)|EpochTime|Optional: The time in the scenario when the object is created.| 
+|CreationTime<br/>(NETN-BASE)||| 
 |DamageState<br/>(RPR-Physical)|DamageStatusEnum32|Optional. The state of damage of the entity. Default = Other.| 
 |EngineSmokeOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's engine is generating smoke or not. Default = Other.| 
 |EntityIdentifier<br/>(RPR-Base)|EntityIdentifierStruct|The unique identifier for the entity instance.| 
@@ -349,7 +359,7 @@ A platform entity that operates wholly on the surface of the earth.
 |BlackOutLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's black out lights are on or not. Default = False.| 
 |BrakeLightsOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's brake lights are on or not. Default = False.| 
 |CamouflageType<br/>(RPR-Physical)|CamouflageEnum32|Optional. The type of camouflage in use (if any). Default = Other.| 
-|CreationTime<br/>(NETN-BASE)|EpochTime|Optional: The time in the scenario when the object is created.| 
+|CreationTime<br/>(NETN-BASE)||| 
 |DamageState<br/>(RPR-Physical)|DamageStatusEnum32|Optional. The state of damage of the entity. Default = Other.| 
 |EngineSmokeOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's engine is generating smoke or not. Default = Other.| 
 |EntityIdentifier<br/>(RPR-Base)|EntityIdentifierStruct|The unique identifier for the entity instance.| 
@@ -400,7 +410,7 @@ A platform entity that operates wholly on the surface of the sea.
 |WaveOffLightOn|RPRboolean|Optional: Whether the entitys wave off light is on or not. Default Off = False.|
 |ArticulatedParametersArray<br/>(RPR-Physical)|ArticulatedParameterStructLengthlessArray|Optional. Identification of the visible parts, and their states, of the entity which are capable of independent motion. Default = Other.| 
 |CamouflageType<br/>(RPR-Physical)|CamouflageEnum32|Optional. The type of camouflage in use (if any). Default = Other.| 
-|CreationTime<br/>(NETN-BASE)|EpochTime|Optional: The time in the scenario when the object is created.| 
+|CreationTime<br/>(NETN-BASE)||| 
 |DamageState<br/>(RPR-Physical)|DamageStatusEnum32|Optional. The state of damage of the entity. Default = Other.| 
 |EngineSmokeOn<br/>(RPR-Physical)|RPRboolean|Optional. Whether the entity's engine is generating smoke or not. Default = Other.| 
 |EntityIdentifier<br/>(RPR-Base)|EntityIdentifierStruct|The unique identifier for the entity instance.| 

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <objectModel xsi:schemaLocation="http://standards.ieee.org/IEEE1516-2010 http://standards.ieee.org/downloads/1516/1516.2-2010/IEEE1516-DIF-2010.xsd" xmlns="http://standards.ieee.org/IEEE1516-2010" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <modelIdentification>
+    <modelIdentification notes="netn-entity_overview">
         <name>NETN-ENTITY</name>
         <type>FOM</type>
         <version>v3.0</version>
-        <modificationDate>2023-12-09</modificationDate>
+        <modificationDate>2024-03-09</modificationDate>
         <securityClassification>Not Classified</securityClassification>
         <purpose>The NETN-ENTITY FOM Module provides a standard interface for representing simulation entities in a federated distributed simulation. The module extends the RPR-FOM standard SISO-STD-001-2015 with additional attributes for simulated physical and aggregated entities.</purpose>
         <applicationDomain></applicationDomain>
-        <description>The specification is based on IEEE 1516 High Level Architecture (HLA) Object Model Template (OMT) and supports interoperability in a federated simulation (federation) based on HLA.</description>
+        <description></description>
         <useLimitation>For backward compatibility, published objects should include all required RPR-FOM attributes.</useLimitation>
         <useHistory>v1.2 - First version developed by MSG-134 for NETN FOM v2.0. Object classes and datatypes derived from deprecated NETN FOM v 1.0 module AggDeagg.</useHistory>
         <useHistory notes="netn-physical_changelog_1">v2.0 - Updated version developed by MSG-163 for NETN FOM v3.0 renamed NETN-Physical</useHistory>
@@ -1149,7 +1149,15 @@ NETN-MRM FOM Module v1.2.0 was developed by MSG-106 and MSG-134 and released as 
         </note>
         <note>
             <label>netn-entity_overview</label>
-            <semantics></semantics>
+            <semantics>## Overview
+
+The NETN-ENTITY module extends the RPR-FOM `BaseEntity` object class with optional attributes available for all physical and aggregate entity objects. In addition, the RPR-FOM `AggregateEntity` object class is extended with additional attributes.
+
+The module extends the RPR-FOM Platform, Aircraft, and SurfaceVessel with light-related attributes.
+
+A TankerAircraft object class extends the Aircraft object class as a new subclass.
+
+            </semantics>
         </note>
     </notes>
 </objectModel>
